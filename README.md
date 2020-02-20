@@ -20,12 +20,14 @@ Bijlsma Working Paper for more information:
 
 ## Installation
 
-You can install the released version of cfdecomp from
+You cannot yet install the released version of cfdecomp from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
 install.packages("cfdecomp")
 ```
+
+But let's hope that will soon be possible!
 
 ## Example
 
