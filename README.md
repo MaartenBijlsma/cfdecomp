@@ -1,2 +1,0 @@
-# cfdecomp
-counterfactual decomposition tools
