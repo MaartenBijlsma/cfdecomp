@@ -53,7 +53,7 @@ hist(mean.results.1$out_nc_m[,1],col='grey')
 abline(v=mean(cfd.example.data$med.gauss[cfd.example.data$SES==1]),lwd=4)
 ```
 
-<img src="man/figures/README-example-1.png" width="100%" />
+<img src="https://github.com/MaartenBijlsma/cfdecomp/blob/master/man/figures/README-example-1.png" width="100%" />
 
 ``` r
 mean(mean.results.1$out_nc_m[,1]);mean(cfd.example.data$med.gauss[cfd.example.data$SES==1])
