@@ -57,5 +57,31 @@ cfd.quantile(
 Decompose the difference in a quantile of some outcome Y between groups.
 }
 \examples{
-1+1
+\dontrun{
+quantile.results.1 <- cfd.quantile(formula.y='out.gauss ~ SES + med.gauss + med.binom + age',
+                                  formula.m='med.gauss ~ SES + age',
+                                  mediator='med.gauss',
+                                  group='SES',
+                                  data=cfd.example.data,
+                                  family.y='gaussian',
+                                  family.m='gaussian',
+                                  bs.size=250,
+                                  mc.size=50,
+                                  alpha=0.05,
+                                  probs=0.50)
+# the differences between SES groups 1 and 2 were first:
+mean(quantile.results.1$out_nc_y[,2] - quantile.results.1$out_nc_y[,1])
+# and after giving the gaussian mediator of SES group 2 the distribution of the one in group 1
+# the difference becomes:
+mean(quantile.results.1$out_cf_y[,2] - quantile.results.1$out_nc_y[,1])
+# so the \% of the outcome Y that is due to differences between the two SES groups
+# in the gaussian mediator is
+mean(1-(quantile.results.1$out_cf_y[,2] - quantile.results.1$out_nc_y[,1]) /
+(quantile.results.1$out_nc_y[,2] - quantile.results.1$out_nc_y[,1]))
+# we can also get this number, and the one from the comparison of the other SES group
+# with group 1, straight from the object
+quantile.results.1$mediation
+# and we can get the 1-alpha CI for each:
+quantile.results.1$mediation_quantile
+}
 }
