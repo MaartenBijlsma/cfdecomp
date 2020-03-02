@@ -17,6 +17,6 @@ A running mean, intended to check when convergence is achieved (useful for setti
 }
 \examples{
 \dontrun{
-place example here!!
+# See main description of package.
 }
 }

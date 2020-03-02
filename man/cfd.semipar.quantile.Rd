@@ -52,7 +52,7 @@ Decompose the difference in a quantile of some outcome Y between groups. In this
 }
 \examples{
 \dontrun{
-place example here!!
+# See main description of package.
 }
 #' @import stats
 }

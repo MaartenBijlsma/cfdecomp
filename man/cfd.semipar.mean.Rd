@@ -49,7 +49,7 @@ Decompose the mean difference in outcome Y between groups. In this semiparametri
 }
 \examples{
 \dontrun{
-place example here!!
+# See main description of package.
 }
 
 #' @import stats

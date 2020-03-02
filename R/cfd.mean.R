@@ -19,7 +19,8 @@
 #' @return \code{out_nc_m} returns the mean level of the mediator under the natural course, which is a value that should be close to the empirically observed value of the mediator for each group. \code{out_nc_quantile} provides the \code{alpha/2} and \code{1-alpha/2} bootstrap quantiles for this mean (AKA bootstrap percentile confidence intervals). \code{out_nc_y} and \code{out_nc_quantile_y} provide the corresponding values, but then for the outcome variable Y. Similarly, \code{out_cf_m}, \code{out_cf_quantile_m},\code{out_cf_y}, and \code{out_cf_quantile_y} provide the corresponding values for the counterfactual scenario where the mediators of the groups are equalized. \code{mediation} returns the proportion mediated by setting the intervened on mediator to be equal in level to the reference group and \code{mediation_quantile} returns the 1-alpha confidence interval. \code{mc_conv_info_m} and \code{mc_conv_info_y} provide information that can help determine the number of Monte Carlo and Bootstrap iterations needed to achieve stability. See the \code{Examples} for more information.
 #' @export
 #'
-#' @examples \dontrun{
+#' @examples
+#' \dontrun{
 #' mean.results.1 <- cfd.mean(formula.y='out.gauss ~ SES + med.gauss + med.binom + age',
 #' formula.m='med.gauss ~ SES + age',
 #' mediator='med.gauss',
