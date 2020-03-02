@@ -9,6 +9,6 @@
 #' \item{med.gauss}{a mediator that is a continuous variable and normally distributed.}
 #' \item{med.binom}{a mediator that is binomial.}
 #' \item{med.pois}{a mediator that is a count variable and poisson distributed.}
-#' \item{out.gauss}{an outcome that is a continuous variable and normally disibuted.}
+#' \item{out.gauss}{an outcome that is a continuous variable and normally distributed.}
 #' }
 "cfd.example.data"
