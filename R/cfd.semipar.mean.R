@@ -19,7 +19,7 @@
 #' @export
 #'
 #' @examples \dontrun{
-#' place example here!!
+#' # See main description of package.
 #' }
 #'
 #'#' @import stats

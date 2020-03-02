@@ -11,6 +11,6 @@
 #' @import stats
 #'
 #' @examples \dontrun{
-#' place example here!!
+#' # See main description of package.
 #' }
 conv.mean <- function(x) {cumsum(x)/(1:length(x))}

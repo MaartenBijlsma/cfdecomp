@@ -20,7 +20,7 @@
 #' @export
 #'
 #' @examples \dontrun{
-#' place example here!!
+#' # See main description of package.
 #' }
 #' #' @import stats
 cfd.semipar.quantile <- function(formula,mediator,group,strata=NA,nbin=5,
