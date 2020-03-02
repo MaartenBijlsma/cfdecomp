@@ -141,6 +141,10 @@ mean.results.1$mediation
 #>         2         3 
 #> 0.2399789 0.3046591
 # and we can get the 1-alpha CI for each:
+# you'll notice the first number is the same as the one we calculated ourselves from the output
+# this is the proportion mediated when coming the first and the second SES group
+# the second number is the proportion mediated when comparing the first and the third SES group
+# and we can get the 1-alpha confidence intervals for each:
 mean.results.1$mediation_quantile
 #>               2         3
 #> 2.5%  0.1995080 0.2797294
