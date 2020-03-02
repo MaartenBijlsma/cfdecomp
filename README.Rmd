@@ -84,17 +84,20 @@ mean(mean.results.1$out_nc_y[,3]);mean(cfd.example.data$out.gauss[cfd.example.da
 
 # looks good!
 
-# estimate the effect of the intervention and % mediation (decomposition)
+# estimate the effect of the intervention and proportion mediated (decomposition)
 # the differences between SES groups 1 and 2 were first:
 mean(mean.results.1$out_nc_y[,2] - mean.results.1$out_nc_y[,1])
 # and after giving the gaussian mediator of SES group 2 the distribution of the one in group 1
 # the difference becomes:
 mean(mean.results.1$out_cf_y[,2] - mean.results.1$out_nc_y[,1])
-# so the % of the outcome Y that is due to differences between the two SES groups in the gaussian mediator is
+# so the proportion of the outcome Y that is due to differences between the two SES groups in the gaussian mediator is
 mean(1-(mean.results.1$out_cf_y[,2] - mean.results.1$out_nc_y[,1]) / (mean.results.1$out_nc_y[,2] - mean.results.1$out_nc_y[,1]))
 # we can also get this number, and the one from the comparison of the other SES group with group 1, straight from the object
 mean.results.1$mediation
-# and we can get the 1-alpha CI for each:
+# you'll notice the first number is the same as the one we calculated ourselves from the output
+# this is the proportion mediated when coming the first and the second SES group
+# the second number is the proportion mediated when comparing the first and the third SES group
+# and we can get the 1-alpha confidence intervals for each:
 mean.results.1$mediation_quantile
 
 # if a mediator is binomial distributed
