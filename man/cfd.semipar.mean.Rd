@@ -47,10 +47,3 @@ cfd.semipar.mean(
 \description{
 Decompose the mean difference in outcome Y between groups. In this semiparametric version, we do not assume a parametric model for the mediator: instead, we sample from the distribution of the mediator in the reference group; this can be done within strata of one or more third variables.
 }
-\examples{
-\dontrun{
-# See main description of package.
-}
-
-#' @import stats
-}

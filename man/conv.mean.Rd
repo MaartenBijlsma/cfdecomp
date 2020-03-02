@@ -15,8 +15,3 @@ returns a running mean of the variable whose convergence we want to check
 \description{
 A running mean, intended to check when convergence is achieved (useful for setting mcsize or bssize).
 }
-\examples{
-\dontrun{
-# See main description of package.
-}
-}
