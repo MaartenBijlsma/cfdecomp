@@ -51,7 +51,7 @@ mean.results.1 <- cfd.mean(formula.y='out.gauss ~ SES + med.gauss + med.binom + 
 # see if our modelling procedure approximates the mean of the mediator well
 # for SES group 1
 hist(mean.results.1$out_nc_m[,1],col='grey',xlab='MC iteration means of M of SES group 1',
-     main='SES group 1: comparison of MC approximation to empirical mean of mediator M')
+     main='Comparison of MC approximation to empirical mean of mediator M')
 # place empirical mean of M in the histogram:
 abline(v=mean(cfd.example.data$med.gauss[cfd.example.data$SES==1]),lwd=4)
 # approximation of the mean of M over the Monte Carlo iterations for SES group 1:
@@ -62,7 +62,7 @@ mean(cfd.example.data$med.gauss[cfd.example.data$SES==1])
 
 # for SES group 2
 hist(mean.results.1$out_nc_m[,2],col='grey',xlab='MC iteration means of M of SES group 2',
-     main='SES group 2: Comparison of MC approximation to empirical mean of mediator M')
+     main='Comparison of MC approximation to empirical mean of mediator M')
 # place empirical mean of M in the histogram:
 abline(v=mean(cfd.example.data$med.gauss[cfd.example.data$SES==2]),lwd=4)
 mean(mean.results.1$out_nc_m[,2]);mean(cfd.example.data$med.gauss[cfd.example.data$SES==2])
@@ -70,7 +70,7 @@ mean(mean.results.1$out_nc_m[,2]);mean(cfd.example.data$med.gauss[cfd.example.da
 
 # for SES group 3
 hist(mean.results.1$out_nc_m[,3],col='grey',xlab='MC iteration means of M of SES group 3',
-     main='SES group 3: Comparison of MC approximation to empirical mean of mediator M')
+     main='Comparison of MC approximation to empirical mean of mediator M')
 # place empirical mean of M in the histogram:
 abline(v=mean(cfd.example.data$med.gauss[cfd.example.data$SES==3]),lwd=4)
 mean(mean.results.1$out_nc_m[,3]);mean(cfd.example.data$med.gauss[cfd.example.data$SES==3])
@@ -79,7 +79,7 @@ mean(mean.results.1$out_nc_m[,3]);mean(cfd.example.data$med.gauss[cfd.example.da
 # see if our modelling procedure approximates the mean of outcome Y well
 # for SES group 1
 hist(mean.results.1$out_nc_y[,1],col='grey',xlab='MC iteration means of Y of SES group 1',
-     main='SES group 1: comparison of MC approximation to empirical mean of outcome Y')
+     main='Comparison of MC approximation to empirical mean of outcome Y')
 # place empirical mean of outcome Y in the histogram:
 abline(v=mean(cfd.example.data$out.gauss[cfd.example.data$SES==1]),lwd=4)
 mean(mean.results.1$out_nc_y[,1]);mean(cfd.example.data$out.gauss[cfd.example.data$SES==1])
@@ -87,7 +87,7 @@ mean(mean.results.1$out_nc_y[,1]);mean(cfd.example.data$out.gauss[cfd.example.da
 
 # for SES group 2
 hist(mean.results.1$out_nc_y[,2],col='grey',xlab='MC iteration means of Y of SES group 2',
-     main='SES group 2: comparison of MC approximation to empirical mean of outcome Y')
+     main='Comparison of MC approximation to empirical mean of outcome Y')
 # place empirical mean of outcome Y in the histogram:
 abline(v=mean(cfd.example.data$out.gauss[cfd.example.data$SES==2]),lwd=4)
 mean(mean.results.1$out_nc_y[,2]);mean(cfd.example.data$out.gauss[cfd.example.data$SES==2])
@@ -95,7 +95,7 @@ mean(mean.results.1$out_nc_y[,2]);mean(cfd.example.data$out.gauss[cfd.example.da
 
 # for SES group 3
 hist(mean.results.1$out_nc_y[,3],col='grey',xlab='MC iteration means of Y of SES group 3',
-     main='SES group 3: comparison of MC approximation to empirical mean of outcome Y')
+     main='Comparison of MC approximation to empirical mean of outcome Y')
 # place empirical mean of outcome Y in the histogram:
 abline(v=mean(cfd.example.data$out.gauss[cfd.example.data$SES==3]),lwd=4)
 mean(mean.results.1$out_nc_y[,3]);mean(cfd.example.data$out.gauss[cfd.example.data$SES==3])
@@ -147,15 +147,20 @@ mean.results.3 <- cfd.mean(formula.y='out.gauss ~ med.pois + age + med.binom',
 # are these number enough for stability? (also consider the scale of the Y-axis)
 
 # bootstrap, mediator, by SES group
-plot(conv.mean(mean.results.1$out_nc_m[,1]),type='l')
-plot(conv.mean(mean.results.1$out_nc_m[,2]),type='l')
-plot(conv.mean(mean.results.1$out_nc_m[,3]),type='l')
+plot(conv.mean(mean.results.1$out_nc_m[,1]),type='l',ylab='Cumulative average of M',
+     main='Bootstrap stability in SES group 1',xlab='Bootstrap iteration')
+plot(conv.mean(mean.results.1$out_nc_m[,2]),type='l',ylab='Cumulative average of M',
+     main='Bootstrap stability in SES group 2',xlab='Bootstrap iteration')
+plot(conv.mean(mean.results.1$out_nc_m[,3]),type='l',ylab='Cumulative average of M',
+     main='Bootstrap stability in SES group 3',xlab='Bootstrap iteration')
 
 # bootstrap, outcome, by SES group
-plot(conv.mean(mean.results.1$out_nc_y[,1]),type='l')
-plot(conv.mean(mean.results.1$out_nc_y[,2]),type='l')
-plot(conv.mean(mean.results.1$out_nc_y[,3]),type='l')
-
+plot(conv.mean(mean.results.1$out_nc_y[,1]),type='l',ylab='Cumulative average of Y',
+     main='Bootstrap stability in SES group 1',xlab='Bootstrap iteration')
+plot(conv.mean(mean.results.1$out_nc_y[,2]),type='l',ylab='Cumulative average of Y',
+     main='Bootstrap stability in SES group 2',xlab='Bootstrap iteration')
+plot(conv.mean(mean.results.1$out_nc_y[,3]),type='l',ylab='Cumulative average of Y',
+     main='Bootstrap stability in SES group 3',xlab='Bootstrap iteration')
 # a bootstrap size of 250 is more than enough for stability of the estimate
 # of course, we want a large size to also get precise quantiles (confidence intervals)
 
@@ -172,14 +177,20 @@ x <- cfd.mean(formula.y='out.gauss ~ med.pois + age + med.binom',
               alpha=0.05)
 
 # Monte Carlo, mediator, by SES group
-plot(x$mc_conv_info_m[,1],type='l')
-plot(x$mc_conv_info_m[,2],type='l')
-plot(x$mc_conv_info_m[,3],type='l')
+plot(x$mc_conv_info_m[,1],type='l',ylab='Cumulative average of M',
+     main='Monte Carlo stability in SES group 1',xlab='Monte Carlo iteration')
+plot(x$mc_conv_info_m[,2],type='l',ylab='Cumulative average of M',
+     main='Monte Carlo stability in SES group 2',xlab='Monte Carlo iteration')
+plot(x$mc_conv_info_m[,3],type='l',ylab='Cumulative average of M',
+     main='Monte Carlo stability in SES group 3',xlab='Monte Carlo iteration')
 
 # Bootstrap, mediator, by SES group
-plot(x$mc_conv_info_y[,1],type='l')
-plot(x$mc_conv_info_y[,2],type='l')
-plot(x$mc_conv_info_y[,3],type='l')
+plot(x$mc_conv_info_y[,1],type='l',ylab='Cumulative average of Y',
+     main='Monte Carlo stability in SES group 1',xlab='Monte Carlo iteration')
+plot(x$mc_conv_info_y[,2],type='l',ylab='Cumulative average of Y',
+     main='Monte Carlo stability in SES group 2',xlab='Monte Carlo iteration')
+plot(x$mc_conv_info_y[,3],type='l',ylab='Cumulative average of Y',
+     main='Monte Carlo stability in SES group 3',xlab='Monte Carlo iteration')
 
 # 50 Monte Carlo iterations seems very sufficient
 
