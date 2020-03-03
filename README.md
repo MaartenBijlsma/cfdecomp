@@ -55,12 +55,12 @@ hist(mean.results.1$out_nc_m[,1],col='grey',xlab='MC iteration means of M of SES
 abline(v=mean(cfd.example.data$med.gauss[cfd.example.data$SES==1]),lwd=4)
 ```
 
-<img src="figures/README-example-1.png" width="100%" />
+<img src="man/figures/README-example-1.png" width="100%" />
 
 ``` r
 # approximation of the mean of M over the Monte Carlo iterations for SES group 1:
 mean(mean.results.1$out_nc_m[,1])
-#> [1] 8.16136
+#> [1] 8.16126
 # empirical mean of mediator M for SES group 1:
 mean(cfd.example.data$med.gauss[cfd.example.data$SES==1])
 #> [1] 8.163461
@@ -73,11 +73,11 @@ hist(mean.results.1$out_nc_m[,2],col='grey',xlab='MC iteration means of M of SES
 abline(v=mean(cfd.example.data$med.gauss[cfd.example.data$SES==2]),lwd=4)
 ```
 
-<img src="figures/README-example-2.png" width="100%" />
+<img src="man/figures/README-example-2.png" width="100%" />
 
 ``` r
 mean(mean.results.1$out_nc_m[,2]);mean(cfd.example.data$med.gauss[cfd.example.data$SES==2])
-#> [1] 7.186371
+#> [1] 7.184265
 #> [1] 7.186521
 # conclusion: also for group 2, approximation is good
 
@@ -88,11 +88,11 @@ hist(mean.results.1$out_nc_m[,3],col='grey',xlab='MC iteration means of M of SES
 abline(v=mean(cfd.example.data$med.gauss[cfd.example.data$SES==3]),lwd=4)
 ```
 
-<img src="figures/README-example-3.png" width="100%" />
+<img src="man/figures/README-example-3.png" width="100%" />
 
 ``` r
 mean(mean.results.1$out_nc_m[,3]);mean(cfd.example.data$med.gauss[cfd.example.data$SES==3])
-#> [1] 5.379294
+#> [1] 5.38247
 #> [1] 5.376548
 # conclusion: also for group 3, approximation of M is good
 
@@ -104,11 +104,11 @@ hist(mean.results.1$out_nc_y[,1],col='grey',xlab='MC iteration means of Y of SES
 abline(v=mean(cfd.example.data$out.gauss[cfd.example.data$SES==1]),lwd=4)
 ```
 
-<img src="figures/README-example-4.png" width="100%" />
+<img src="man/figures/README-example-4.png" width="100%" />
 
 ``` r
 mean(mean.results.1$out_nc_y[,1]);mean(cfd.example.data$out.gauss[cfd.example.data$SES==1])
-#> [1] 4.142032
+#> [1] 4.143745
 #> [1] 4.145881
 # conclusion: on average, our distributions of means of Y centers on the empirical distribution of Y 
 
@@ -119,11 +119,11 @@ hist(mean.results.1$out_nc_y[,2],col='grey',xlab='MC iteration means of Y of SES
 abline(v=mean(cfd.example.data$out.gauss[cfd.example.data$SES==2]),lwd=4)
 ```
 
-<img src="figures/README-example-5.png" width="100%" />
+<img src="man/figures/README-example-5.png" width="100%" />
 
 ``` r
 mean(mean.results.1$out_nc_y[,2]);mean(cfd.example.data$out.gauss[cfd.example.data$SES==2])
-#> [1] 3.286105
+#> [1] 3.282854
 #> [1] 3.284409
 # conclusion: also for group 2, approximation of Y is good
 
@@ -134,11 +134,11 @@ hist(mean.results.1$out_nc_y[,3],col='grey',xlab='MC iteration means of Y of SES
 abline(v=mean(cfd.example.data$out.gauss[cfd.example.data$SES==3]),lwd=4)
 ```
 
-<img src="figures/README-example-6.png" width="100%" />
+<img src="man/figures/README-example-6.png" width="100%" />
 
 ``` r
 mean(mean.results.1$out_nc_y[,3]);mean(cfd.example.data$out.gauss[cfd.example.data$SES==3])
-#> [1] 2.231592
+#> [1] 2.230554
 #> [1] 2.227222
 # conclusion: also for group 3, approximation of Y is good
 
@@ -147,26 +147,26 @@ mean(mean.results.1$out_nc_y[,3]);mean(cfd.example.data$out.gauss[cfd.example.da
 # estimate the effect of the intervention and proportion mediated (decomposition)
 # the differences between SES groups 1 and 2 were first:
 mean(mean.results.1$out_nc_y[,2] - mean.results.1$out_nc_y[,1])
-#> [1] -0.855927
+#> [1] -0.8608917
 # and after giving the gaussian mediator of SES group 2 the distribution of the one in group 1
 # the difference becomes:
 mean(mean.results.1$out_cf_y[,2] - mean.results.1$out_nc_y[,1])
-#> [1] -0.6490111
+#> [1] -0.6535251
 # so the proportion of the outcome Y that is due to differences between the two SES groups in the gaussian mediator is
 mean(1-(mean.results.1$out_cf_y[,2] - mean.results.1$out_nc_y[,1]) / (mean.results.1$out_nc_y[,2] - mean.results.1$out_nc_y[,1]))
-#> [1] 0.2422224
+#> [1] 0.2415423
 # we can also get this number, and the one from the comparison of the other SES group with group 1, straight from the object
 mean.results.1$mediation
 #>         2         3 
-#> 0.2422224 0.3066035
+#> 0.2415423 0.3070743
 # you'll notice the first number is the same as the one we calculated ourselves from the output
 # this is the proportion mediated when coming the first and the second SES group
 # the second number is the proportion mediated when comparing the first and the third SES group
 # and we can get the 1-alpha confidence intervals for each:
 mean.results.1$mediation_quantile
 #>               2         3
-#> 2.5%  0.2054395 0.2787713
-#> 97.5% 0.2824412 0.3324227
+#> 2.5%  0.2035786 0.2787623
+#> 97.5% 0.2831425 0.3349259
 
 # if a mediator is binomial distributed
 mean.results.2 <- cfd.mean(formula.y='out.gauss ~ med.pois + age + med.binom',
@@ -200,21 +200,21 @@ plot(conv.mean(mean.results.1$out_nc_m[,1]),type='l',ylab='Cumulative average of
      main='Bootstrap stability in SES group 1',xlab='Bootstrap iteration')
 ```
 
-<img src="figures/README-example-7.png" width="100%" />
+<img src="man/figures/README-example-7.png" width="100%" />
 
 ``` r
 plot(conv.mean(mean.results.1$out_nc_m[,2]),type='l',ylab='Cumulative average of M',
      main='Bootstrap stability in SES group 2',xlab='Bootstrap iteration')
 ```
 
-<img src="figures/README-example-8.png" width="100%" />
+<img src="man/figures/README-example-8.png" width="100%" />
 
 ``` r
 plot(conv.mean(mean.results.1$out_nc_m[,3]),type='l',ylab='Cumulative average of M',
      main='Bootstrap stability in SES group 3',xlab='Bootstrap iteration')
 ```
 
-<img src="figures/README-example-9.png" width="100%" />
+<img src="man/figures/README-example-9.png" width="100%" />
 
 ``` r
 
@@ -223,21 +223,21 @@ plot(conv.mean(mean.results.1$out_nc_y[,1]),type='l',ylab='Cumulative average of
      main='Bootstrap stability in SES group 1',xlab='Bootstrap iteration')
 ```
 
-<img src="figures/README-example-10.png" width="100%" />
+<img src="man/figures/README-example-10.png" width="100%" />
 
 ``` r
 plot(conv.mean(mean.results.1$out_nc_y[,2]),type='l',ylab='Cumulative average of Y',
      main='Bootstrap stability in SES group 2',xlab='Bootstrap iteration')
 ```
 
-<img src="figures/README-example-11.png" width="100%" />
+<img src="man/figures/README-example-11.png" width="100%" />
 
 ``` r
 plot(conv.mean(mean.results.1$out_nc_y[,3]),type='l',ylab='Cumulative average of Y',
      main='Bootstrap stability in SES group 3',xlab='Bootstrap iteration')
 ```
 
-<img src="figures/README-example-12.png" width="100%" />
+<img src="man/figures/README-example-12.png" width="100%" />
 
 ``` r
 # a bootstrap size of 250 is more than enough for stability of the estimate
@@ -260,21 +260,21 @@ plot(x$mc_conv_info_m[,1],type='l',ylab='Cumulative average of M',
      main='Monte Carlo stability in SES group 1',xlab='Monte Carlo iteration')
 ```
 
-<img src="figures/README-example-13.png" width="100%" />
+<img src="man/figures/README-example-13.png" width="100%" />
 
 ``` r
 plot(x$mc_conv_info_m[,2],type='l',ylab='Cumulative average of M',
      main='Monte Carlo stability in SES group 2',xlab='Monte Carlo iteration')
 ```
 
-<img src="figures/README-example-14.png" width="100%" />
+<img src="man/figures/README-example-14.png" width="100%" />
 
 ``` r
 plot(x$mc_conv_info_m[,3],type='l',ylab='Cumulative average of M',
      main='Monte Carlo stability in SES group 3',xlab='Monte Carlo iteration')
 ```
 
-<img src="figures/README-example-15.png" width="100%" />
+<img src="man/figures/README-example-15.png" width="100%" />
 
 ``` r
 
@@ -283,21 +283,21 @@ plot(x$mc_conv_info_y[,1],type='l',ylab='Cumulative average of Y',
      main='Monte Carlo stability in SES group 1',xlab='Monte Carlo iteration')
 ```
 
-<img src="figures/README-example-16.png" width="100%" />
+<img src="man/figures/README-example-16.png" width="100%" />
 
 ``` r
 plot(x$mc_conv_info_y[,2],type='l',ylab='Cumulative average of Y',
      main='Monte Carlo stability in SES group 2',xlab='Monte Carlo iteration')
 ```
 
-<img src="figures/README-example-17.png" width="100%" />
+<img src="man/figures/README-example-17.png" width="100%" />
 
 ``` r
 plot(x$mc_conv_info_y[,3],type='l',ylab='Cumulative average of Y',
      main='Monte Carlo stability in SES group 3',xlab='Monte Carlo iteration')
 ```
 
-<img src="figures/README-example-18.png" width="100%" />
+<img src="man/figures/README-example-18.png" width="100%" />
 
 ``` r
 
