@@ -12,15 +12,14 @@ This is a first release of the cfdecomp package, which has so far only been avai
 
 
 ## R CMD check result
-s
-all of the above were OK and returned
+All of the above were OK and returned
 
 0 errors | 0 warnings | 1 notes 
 
 
 
 NOTE: 
-1) Maintainer: ‘Maarten Bijlsma <maarten.bijlsma@gmail.com>’
+1) Maintainer: ?Maarten Bijlsma <maarten.bijlsma@gmail.com>?
   
   New submission
 
