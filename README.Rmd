@@ -50,35 +50,56 @@ mean.results.1 <- cfd.mean(formula.y='out.gauss ~ SES + med.gauss + med.binom + 
 
 # see if our modelling procedure approximates the mean of the mediator well
 # for SES group 1
-hist(mean.results.1$out_nc_m[,1],col='grey')
+hist(mean.results.1$out_nc_m[,1],col='grey',xlab='MC iteration means of M of SES group 1',
+     main='SES group 1: comparison of MC approximation to empirical mean of mediator M')
+# place empirical mean of M in the histogram:
 abline(v=mean(cfd.example.data$med.gauss[cfd.example.data$SES==1]),lwd=4)
-mean(mean.results.1$out_nc_m[,1]);mean(cfd.example.data$med.gauss[cfd.example.data$SES==1])
+# approximation of the mean of M over the Monte Carlo iterations for SES group 1:
+mean(mean.results.1$out_nc_m[,1])
+# empirical mean of mediator M for SES group 1:
+mean(cfd.example.data$med.gauss[cfd.example.data$SES==1])
+# conclusion: on average, our distributions of means of M centers on the empirical distribution of M
 
 # for SES group 2
-hist(mean.results.1$out_nc_m[,2],col='grey')
+hist(mean.results.1$out_nc_m[,2],col='grey',xlab='MC iteration means of M of SES group 2',
+     main='SES group 2: Comparison of MC approximation to empirical mean of mediator M')
+# place empirical mean of M in the histogram:
 abline(v=mean(cfd.example.data$med.gauss[cfd.example.data$SES==2]),lwd=4)
 mean(mean.results.1$out_nc_m[,2]);mean(cfd.example.data$med.gauss[cfd.example.data$SES==2])
+# conclusion: also for group 2, approximation is good
 
 # for SES group 3
-hist(mean.results.1$out_nc_m[,3],col='grey')
+hist(mean.results.1$out_nc_m[,3],col='grey',xlab='MC iteration means of M of SES group 3',
+     main='SES group 3: Comparison of MC approximation to empirical mean of mediator M')
+# place empirical mean of M in the histogram:
 abline(v=mean(cfd.example.data$med.gauss[cfd.example.data$SES==3]),lwd=4)
 mean(mean.results.1$out_nc_m[,3]);mean(cfd.example.data$med.gauss[cfd.example.data$SES==3])
+# conclusion: also for group 3, approximation of M is good
 
-# see if our modelling procedure approximates the mean of the outcome well
+# see if our modelling procedure approximates the mean of outcome Y well
 # for SES group 1
-hist(mean.results.1$out_nc_y[,1],col='grey')
+hist(mean.results.1$out_nc_y[,1],col='grey',xlab='MC iteration means of Y of SES group 1',
+     main='SES group 1: comparison of MC approximation to empirical mean of outcome Y')
+# place empirical mean of outcome Y in the histogram:
 abline(v=mean(cfd.example.data$out.gauss[cfd.example.data$SES==1]),lwd=4)
 mean(mean.results.1$out_nc_y[,1]);mean(cfd.example.data$out.gauss[cfd.example.data$SES==1])
+# conclusion: on average, our distributions of means of Y centers on the empirical distribution of Y 
 
 # for SES group 2
-hist(mean.results.1$out_nc_y[,2],col='grey')
+hist(mean.results.1$out_nc_y[,2],col='grey',xlab='MC iteration means of Y of SES group 2',
+     main='SES group 2: comparison of MC approximation to empirical mean of outcome Y')
+# place empirical mean of outcome Y in the histogram:
 abline(v=mean(cfd.example.data$out.gauss[cfd.example.data$SES==2]),lwd=4)
 mean(mean.results.1$out_nc_y[,2]);mean(cfd.example.data$out.gauss[cfd.example.data$SES==2])
+# conclusion: also for group 2, approximation of Y is good
 
 # for SES group 3
-hist(mean.results.1$out_nc_y[,3],col='grey')
+hist(mean.results.1$out_nc_y[,3],col='grey',xlab='MC iteration means of Y of SES group 3',
+     main='SES group 3: comparison of MC approximation to empirical mean of outcome Y')
+# place empirical mean of outcome Y in the histogram:
 abline(v=mean(cfd.example.data$out.gauss[cfd.example.data$SES==3]),lwd=4)
 mean(mean.results.1$out_nc_y[,3]);mean(cfd.example.data$out.gauss[cfd.example.data$SES==3])
+# conclusion: also for group 3, approximation of Y is good
 
 # looks good!
 
