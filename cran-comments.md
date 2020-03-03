@@ -1,9 +1,13 @@
 
 This is a first release of the cfdecomp package, which has so far only been available on github under the name cfdecomp
 
+Note that examples are encased in 'dontrun' because the examples take a long time to run, but these have been tested and they work.
+
 ## Test environments
 
 * local test on Windows NT 6.1 (64-bit), R version 3.6.2 (2019-12-12)
+* Via win-builder on x86_64-w64-mingw32 (64-bit)
+  * R Under development (unstable) (2020-01-28 r77738)
 * via devtools::rhub()
 	* Windows Server 2008 R2 SP1, R-devel, 32/64 bit
 	* Ubuntu Linux 16.04 LTS, R-release, GCC
