@@ -30,10 +30,10 @@ This is in order.
 2) Possibly mis-spelled words in DESCRIPTION:
 
     Bijlsma (12:555)
-    Counterfactual (3:25)
-    Sudharsanan (12:541)
-    analytical (12:311)
-    multivariable (12:238)
+    /Counterfactual (3:25)
+    /Sudharsanan (12:541)
+    /analytical (12:311)
+    /multivariable (12:238)
 
 Bijlsma and Sudharsanan are the authors names
 Counterfactual and analytical are correctly written, as is multivariable
