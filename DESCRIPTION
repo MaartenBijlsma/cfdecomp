@@ -8,7 +8,7 @@ Authors@R: c(
     person("Peng", "Li", role=c("ctb"))
     )
 Maintainer: Maarten Bijlsma <maarten.bijlsma@gmail.com>
-Description: Provides functions to decompose differences in an outcome attributable to a mediating variable (or sets of mediating variables) between groups. By using Monte Carlo Integration (simulations based on empirical estimates from multivariable models) we provide added flexibility compared to existing (analytical) approaches, at the cost of computational power or time. The added flexibility means that we can decompose difference between groups in any outcome or and with any mediator (any variable type and distribution). See the Sudharsanan & Bijlsma Working Paper for more information: <https://www.demogr.mpg.de/papers/working/wp-2019-004.pdf>.
+Description: cfdecomp stands for 'counterfactual decomposition'. This package provides functions to decompose differences in an outcome attributable to a mediating variable (or sets of mediating variables) between groups based on counterfactual (causal inference) theory. By using Monte Carlo Integration (simulations based on empirical estimates from multivariable models) we provide added flexibility compared to existing (analytical) approaches, at the cost of computational power or time. The added flexibility means that we can decompose difference between groups in any outcome or and with any mediator (any variable type and distribution). See the [Sudharsanan & Bijlsma Working Paper](https://www.demogr.mpg.de/papers/working/wp-2019-004.pdf) for more information.
 Depends: R (>= 3.5.0)
 License: GPL-3
 Encoding: UTF-8
