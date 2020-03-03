@@ -1,4 +1,6 @@
 
+# cfdecomp v0.1.0
+
 This is a first release of the cfdecomp package, which has so far only been available on github under the name cfdecomp
 
 Note that examples are encased in 'dontrun' because the examples take a long time to run, but these have been tested and they work.
