@@ -3,6 +3,7 @@ This is a first release of the cfdecomp package, which has so far only been avai
 
 ## Test environments
 
+* local test on Windows NT 6.1 (64-bit), R version 3.6.2 (2019-12-12)
 * via devtools::rhub()
 	* Windows Server 2008 R2 SP1, R-devel, 32/64 bit
 	* Ubuntu Linux 16.04 LTS, R-release, GCC
