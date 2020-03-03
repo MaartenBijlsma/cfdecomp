@@ -3,12 +3,12 @@ This is a first release of the cfdecomp package, which has so far only been avai
 
 ## Test environments
 
-
 * via devtools::rhub()
 	* Windows Server 2008 R2 SP1, R-devel, 32/64 bit
 	* Ubuntu Linux 16.04 LTS, R-release, GCC
 	* Fedora Linux, R-devel, clang, gfortran
-
+* via R travis-ci Ubuntu 16.04.6 LTS
+	* R version 3.6.2 (2017-01-27)
 
 
 ## R CMD check result
