@@ -19,7 +19,7 @@ All of the above were OK and returned
 
 
 NOTE: 
-1) Maintainer: ?Maarten Bijlsma <maarten.bijlsma@gmail.com>?
+1) Maintainer: Maarten Bijlsma <maarten.bijlsma@gmail.com>
   
   New submission
 
