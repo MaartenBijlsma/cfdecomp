@@ -9,16 +9,18 @@
 Status](https://travis-ci.com/MaartenBijlsma/cfdecomp.svg?branch=master)](https://travis-ci.com/MaartenBijlsma/cfdecomp)
 <!-- badges: end -->
 
-cfdecomp provides functions to decompose differences in an outcome
-attributable to a mediating variable (or sets of mediating variables)
-between groups. By using Monte Carlo Integration (simulations based on
-empirical estimates from multivariable models) we provide added
-flexibility compared to existing (analytical) approaches, at the cost of
-computational power or time. The added flexibility means that we can
-decompose difference between groups in any outcome or and with any
-mediator (any variable type and distribution). See the Sudharsanan &
-Bijlsma Working Paper for more information:
-<https://www.demogr.mpg.de/papers/working/wp-2019-004.pdf>.
+cfdecomp stands for ‘counterfactual decomposition’. This package
+provides functions to decompose differences in an outcome attributable
+to a mediating variable (or sets of mediating variables) between groups
+based on counterfactual (causal inference) theory. By using Monte Carlo
+Integration (simulations based on empirical estimates from multivariable
+models) we provide added flexibility compared to existing (analytical)
+approaches, at the cost of computational power or time. The added
+flexibility means that we can decompose difference between groups in any
+outcome or and with any mediator (any variable type and distribution).
+See the [Sudharsanan & Bijlsma Working
+Paper](https://www.demogr.mpg.de/papers/working/wp-2019-004.pdf) for
+more information.
 
 ## Installation
 
@@ -62,7 +64,7 @@ abline(v=mean(cfd.example.data$med.gauss[cfd.example.data$SES==1]),lwd=4)
 ``` r
 # approximation of the mean of M over the Monte Carlo iterations for SES group 1:
 mean(mean.results.1$out_nc_m[,1])
-#> [1] 8.165792
+#> [1] 8.161517
 # empirical mean of mediator M for SES group 1:
 mean(cfd.example.data$med.gauss[cfd.example.data$SES==1])
 #> [1] 8.163461
@@ -79,7 +81,7 @@ abline(v=mean(cfd.example.data$med.gauss[cfd.example.data$SES==2]),lwd=4)
 
 ``` r
 mean(mean.results.1$out_nc_m[,2]);mean(cfd.example.data$med.gauss[cfd.example.data$SES==2])
-#> [1] 7.190697
+#> [1] 7.181451
 #> [1] 7.186521
 # conclusion: also for group 2, approximation is good
 
@@ -94,7 +96,7 @@ abline(v=mean(cfd.example.data$med.gauss[cfd.example.data$SES==3]),lwd=4)
 
 ``` r
 mean(mean.results.1$out_nc_m[,3]);mean(cfd.example.data$med.gauss[cfd.example.data$SES==3])
-#> [1] 5.38139
+#> [1] 5.377285
 #> [1] 5.376548
 # conclusion: also for group 3, approximation of M is good
 
@@ -110,7 +112,7 @@ abline(v=mean(cfd.example.data$out.gauss[cfd.example.data$SES==1]),lwd=4)
 
 ``` r
 mean(mean.results.1$out_nc_y[,1]);mean(cfd.example.data$out.gauss[cfd.example.data$SES==1])
-#> [1] 4.148531
+#> [1] 4.142015
 #> [1] 4.145881
 # conclusion: on average, our distributions of means of Y centers on the empirical distribution of Y 
 
@@ -125,7 +127,7 @@ abline(v=mean(cfd.example.data$out.gauss[cfd.example.data$SES==2]),lwd=4)
 
 ``` r
 mean(mean.results.1$out_nc_y[,2]);mean(cfd.example.data$out.gauss[cfd.example.data$SES==2])
-#> [1] 3.286306
+#> [1] 3.282428
 #> [1] 3.284409
 # conclusion: also for group 2, approximation of Y is good
 
@@ -140,7 +142,7 @@ abline(v=mean(cfd.example.data$out.gauss[cfd.example.data$SES==3]),lwd=4)
 
 ``` r
 mean(mean.results.1$out_nc_y[,3]);mean(cfd.example.data$out.gauss[cfd.example.data$SES==3])
-#> [1] 2.231659
+#> [1] 2.22959
 #> [1] 2.227222
 # conclusion: also for group 3, approximation of Y is good
 
@@ -149,26 +151,26 @@ mean(mean.results.1$out_nc_y[,3]);mean(cfd.example.data$out.gauss[cfd.example.da
 # estimate the effect of the intervention and proportion mediated (decomposition)
 # the differences between SES groups 1 and 2 were first:
 mean(mean.results.1$out_nc_y[,2] - mean.results.1$out_nc_y[,1])
-#> [1] -0.8622249
+#> [1] -0.8595873
 # and after giving the gaussian mediator of SES group 2 the distribution of the one in group 1
 # the difference becomes:
 mean(mean.results.1$out_cf_y[,2] - mean.results.1$out_nc_y[,1])
-#> [1] -0.6567513
+#> [1] -0.6520602
 # so the proportion of the outcome Y that is due to differences between the two SES groups in the gaussian mediator is
 mean(1-(mean.results.1$out_cf_y[,2] - mean.results.1$out_nc_y[,1]) / (mean.results.1$out_nc_y[,2] - mean.results.1$out_nc_y[,1]))
-#> [1] 0.2387491
+#> [1] 0.2418584
 # we can also get this number, and the one from the comparison of the other SES group with group 1, straight from the object
 mean.results.1$mediation
 #>         2         3 
-#> 0.2387491 0.3044589
+#> 0.2418584 0.3067527
 # you'll notice the first number is the same as the one we calculated ourselves from the output
 # this is the proportion mediated when coming the first and the second SES group
 # the second number is the proportion mediated when comparing the first and the third SES group
 # and we can get the 1-alpha confidence intervals for each:
 mean.results.1$mediation_quantile
 #>               2         3
-#> 2.5%  0.1998024 0.2786597
-#> 97.5% 0.2821616 0.3297141
+#> 2.5%  0.2046796 0.2794630
+#> 97.5% 0.2771258 0.3322047
 
 # if a mediator is binomial distributed
 mean.results.2 <- cfd.mean(formula.y='out.gauss ~ med.pois + age + med.binom',
