@@ -36,8 +36,7 @@ This is in order.
     multivariable (12:238)  
 
 Bijlsma and Sudharsanan are the authors names
-Counterfactual and analytical are correctly written, as is multivariable
-The latter is expressly NOT the same as 'multivariate'
+Counterfactual and analytical are correctly written, as is multivariable. The latter is expressly NOT the same as 'multivariate'
 
 
 Many thanks
