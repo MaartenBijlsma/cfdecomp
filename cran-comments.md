@@ -3,7 +3,13 @@
 
 This is a first release of the cfdecomp package, which has so far only been available on github under the name cfdecomp
 
-## Comments received from CRAN team member on March 10, 2020 with response:
+## Comments received from CRAN team member at 1:57PM CET March 10, 2020 with response:
+
+* DOI: specification is only supported in the DEWSCRIPTION file, otherwise you either have to use specific DOI markup such as \doi{} in Rd files or URL markup with fully specified URLs.
+  * We now use the url in angle brackets in the README instead.
+
+
+## Comments received from CRAN team member at 9:59AM CET on March 10, 2020 with response:
 
 * Please shorten the title to a maximum of 65 characters. Acronyms/Abbreviations can be used on their own in the title as long as they are explained in the description field.
   * The title has now been changed to 61 characters (spaces included in the count).
