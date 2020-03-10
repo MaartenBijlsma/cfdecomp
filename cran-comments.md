@@ -6,7 +6,7 @@ This is a first release of the cfdecomp package, which has so far only been avai
 ## Comments received from CRAN team member on March 10, 2020 with response:
 
 * Please shorten the title to a maximum of 65 characters. Acronyms/Abbreviations can be used on their own in the title as long as they are explained in the description field.
-  * The title has now been changed to 61 character (spaces included)
+  * The title has now been changed to 61 character (spaces included in the count).
 
 * Please only capitalize names, sentence beginnings and
 abbreviations/acronyms in the description text of your DESCRIPTION file.
@@ -15,7 +15,7 @@ F.i.: --> integration
 
 * Please write references in the Description field of the DESCRIPTION file in the form authors (year) <doi:...>, authors (year) <arXiv:...>, authors (year, ISBN:...) or if those are not available: authors (year) <https:...>
 with no space after 'doi:', 'arXiv:', 'https:' and angle brackets for auto-linking. (If you want to add the title as well, quote it. --> "title")
-  * We now refer to Sudharsanan & Bijlsma (2019) with the digital object identifier added between angle brackets.
+  * We now refer to Sudharsanan & Bijlsma (2019) with the digital object identifier added between angle brackets. Corresponding changes were made in README.md.
 
 * Please always write TRUE and FALSE instead of T and F. (Also never name your variables T or F.)
   * All instances of =T were changed to =TRUE. Instances of =F were not found.
