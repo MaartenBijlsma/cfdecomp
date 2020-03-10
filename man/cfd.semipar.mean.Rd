@@ -47,3 +47,22 @@ cfd.semipar.mean(
 \description{
 Decompose the mean difference in outcome Y between groups. In this semiparametric version, we do not assume a parametric model for the mediator: instead, we sample from the distribution of the mediator in the reference group; this can be done within strata of one or more third variables.
 }
+\examples{
+set.seed(100)
+# the decomposition functions in our package are computationally intensive
+# to make the example run quick, I perform it on a subsample (n=500) of the data:
+cfd.example.sample <- cfd.example.data[sample(500),]
+mean.semipar.results.1 <- cfd.semipar.mean(formula='out.gauss ~ SES + med.gauss + med.binom + age',
+                                          mediator='med.gauss',
+                                          group='SES',
+                                          strata='age',
+                                          nbin=5,
+                                          data=cfd.example.sample,
+                                          family='gaussian',
+                                          bs.size=50,
+                                          mc.size=10,
+                                          alpha=0.05)
+# also note that normally we would recommend an bs.size of 250+
+# and an mc.size of 50+
+# see README.md for a more detailed description of the functions in this package.
+}

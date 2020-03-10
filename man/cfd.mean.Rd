@@ -51,18 +51,23 @@ cfd.mean(
 Decompose the mean difference in outcome Y between groups.
 }
 \examples{
-\dontrun{
+set.seed(100)
+# the decomposition functions in our package are computationally intensive
+# to make the example run quick, I perform it on a subsample (n=500) of the data:
+cfd.example.sample <- cfd.example.data[sample(500),]
 mean.results.1 <- cfd.mean(formula.y='out.gauss ~ SES + med.gauss + med.binom + age',
-formula.m='med.gauss ~ SES + age',
-mediator='med.gauss',
-group='SES',
-data=cfd.example.data,
-family.y='gaussian',
-family.m='gaussian',
-bs.size=250,
-mc.size=50,
-alpha=0.05)
-# the differences between SES groups 1 and 2 were first:
+                           formula.m='med.gauss ~ SES + age',
+                           mediator='med.gauss',
+                           group='SES',
+                           data=cfd.example.sample,
+                           family.y='gaussian',
+                           family.m='gaussian',
+                           bs.size=50,
+                           mc.size=10,
+                           alpha=0.05)
+# also note that normally we would recommend an bs.size of 250+
+# and an mc.size of 50+
+# let's interpret the output of this function:
 mean(mean.results.1$out_nc_y[,2] - mean.results.1$out_nc_y[,1])
 # and after giving the gaussian mediator of SES group 2 the distribution of the one in group 1
 # the difference becomes:
@@ -76,5 +81,5 @@ mean(1-(mean.results.1$out_cf_y[,2] - mean.results.1$out_nc_y[,1]) /
 mean.results.1$mediation
 # and we can get the 1-alpha CI for each:
 mean.results.1$mediation_quantile
-}
+# see README.md for a more detailed description of the functions in this package.
 }

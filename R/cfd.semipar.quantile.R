@@ -18,7 +18,26 @@
 #'
 #' @return \code{out_nc} returns the mean level of the outcome under the natural course, which is a value that should be close to the empirically observed value of the outcome for each group. \code{out_nc_quantile} provides the \code{alpha/2} and \code{1-alpha/2} bootstrap quantiles for this mean (AKA bootstrap percentile confidence intervals).Similarly, \code{out_cf}, \code{out_cf_quantile},provide the corresponding values for the counterfactual scenario where the mediators of the groups are equalized. \code{mediation} returns the proportion mediated by setting the intervened on mediator to be equal in level to the reference group and \code{mediation_quantile} returns the 1-alpha confidence interval.
 #' @export
-#'
+#' @examples
+#' set.seed(100)
+#' # the decomposition functions in our package are computationally intensive
+#' # to make the example run quick, I perform it on a subsample (n=500) of the data:
+#' cfd.example.sample <- cfd.example.data[sample(500),]
+#' quantile.semipar.results.1 <- cfd.semipar.quantile(formula='out.gauss ~ SES +
+#'                                                   med.gauss + med.binom + age',
+#'                                                   mediator='med.gauss',
+#'                                                   group='SES',
+#'                                                   strata='age',
+#'                                                   nbin=5,
+#'                                                   data=cfd.example.sample,
+#'                                                   family='gaussian',
+#'                                                   bs.size=50,
+#'                                                   mc.size=10,
+#'                                                   alpha=0.05,
+#'                                                   probs=0.50)
+#' # also note that normally we would recommend an bs.size of 250+
+#' # and an mc.size of 50+
+#' # see README.md for a more detailed description of the functions in this package.
 #' @import stats
 cfd.semipar.quantile <- function(formula,mediator,group,strata=NA,nbin=5,
                                  data,
@@ -83,7 +102,7 @@ cfd.semipar.quantile <- function(formula,mediator,group,strata=NA,nbin=5,
       # ! or if you want to age standardize, etc.
       # ! see also code below for the counterfactual predictions
 
-      temp.nc[ii,] <- tapply(pred_bs, list(data_bs[,group]),quantile,probs,probs,na.rm=T)
+      temp.nc[ii,] <- tapply(pred_bs, list(data_bs[,group]),quantile,probs,probs,na.rm=TRUE)
 
     }
     out_nc[i,] <- apply(temp.nc, 2, mean)
@@ -134,12 +153,12 @@ cfd.semipar.quantile <- function(formula,mediator,group,strata=NA,nbin=5,
       # ! And below the code will take quantiles for each group
       # ! Edit the code here if you want to take some other moment instead,
       # ! or if you want to age standardize, etc.
-      temp.cf[ii,] <-  tapply(pred_bs_mc_cf, list(data_bs_mc[,group]),quantile,probs=probs,na.rm=T)
+      temp.cf[ii,] <-  tapply(pred_bs_mc_cf, list(data_bs_mc[,group]),quantile,probs=probs,na.rm=TRUE)
 
     }
 
     ##
-    out_cf[i,] <- apply(temp.cf,2,mean,na.rm=T)
+    out_cf[i,] <- apply(temp.cf,2,mean,na.rm=TRUE)
 
   }
 
@@ -149,7 +168,7 @@ cfd.semipar.quantile <- function(formula,mediator,group,strata=NA,nbin=5,
               out_cf_quantile=apply(out_cf,2,quantile,c(alpha/2,0.5,1-alpha/2)),
 
               mediation=apply(1-(out_cf - out_nc[,1]) / (out_nc - out_nc[,1]),2,mean)[-1],
-              mediation_quantile=apply(1-(out_cf - out_nc[,1]) / (out_nc - out_nc[,1]),2,quantile,probs=c(alpha/2,1-alpha/2),na.rm=T)[,-1]
+              mediation_quantile=apply(1-(out_cf - out_nc[,1]) / (out_nc - out_nc[,1]),2,quantile,probs=c(alpha/2,1-alpha/2),na.rm=TRUE)[,-1]
 
   )
   )

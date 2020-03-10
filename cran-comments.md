@@ -3,9 +3,27 @@
 
 This is a first release of the cfdecomp package, which has so far only been available on github under the name cfdecomp
 
-Note that examples are encased in 'dontrun' because the examples take a long time to run, but these have been tested and they work.
+## Comments received from CRAN team member on March 10, 2020 with response:
 
-## Test environments
+* Please shorten the title to a maximum of 65 characters. Acronyms/Abbreviations can be used on their own in the title as long as they are explained in the description field.
+  * The title has now been changed to 61 characters (spaces included in the count).
+
+* Please only capitalize names, sentence beginnings and
+abbreviations/acronyms in the description text of your DESCRIPTION file.
+F.i.: --> integration
+  * 'Integration', 'Working' and 'Paper' are now no longer capitalized. We believe these were all words that were incorrectly capitalized.
+
+* Please write references in the Description field of the DESCRIPTION file in the form authors (year) <doi:...>, authors (year) <arXiv:...>, authors (year, ISBN:...) or if those are not available: authors (year) <https:...>
+with no space after 'doi:', 'arXiv:', 'https:' and angle brackets for auto-linking. (If you want to add the title as well, quote it. --> "title")
+  * We now refer to Sudharsanan & Bijlsma (2019) with the digital object identifier added between angle brackets. Corresponding changes were made in README.md.
+
+* Please always write TRUE and FALSE instead of T and F. (Also never name your variables T or F.)
+  * All instances of =T were changed to =TRUE. Instances of =F were not found.
+
+* \dontrun{} should be only used if the example really cannot be executed (e.g. because of missing additional software, missing API keys, ...) by the user. That's why wrapping examples in \dontrun{} adds the comment ("# Not run:") as a warning for the user. Please unwrap the examples if they are executable in < 5 sec, or create additionally small toy examples to allow automatic testing. You could also replace \dontrun{} with \donttest{}, but it would be preferable to have automatic checks for functions.
+  * The examples have been unwrapped and altered to run on a subsample of the data and with fewer mc and bs iterations so that they are executable in < 5 seconds.
+
+## Test environments (re-tested on March 10, 2020, after implementing changes described above)
 
 * local test on Windows NT 6.1 (64-bit), R version 3.6.2 (2019-12-12)
 * Via win-builder on x86_64-w64-mingw32 (64-bit)
@@ -36,14 +54,17 @@ This is in order.
 
 2) Possibly mis-spelled words in DESCRIPTION:
 
-    Bijlsma (12:555)  
-    Counterfactual (3:25)  
-    Sudharsanan (12:541)  
-    analytical (12:311)  
-    multivariable (12:238)  
+    Bijlsma (11:671)
+    Counterfactual (3:8)
+    Sudharsanan (11:657)
+    analytical (11:431)
+    cfdecomp (11:14)
+    counterfactual (11:231)
+    multivariable (11:358) 
 
 Bijlsma and Sudharsanan are the authors names
-Counterfactual and analytical are correctly written, as is multivariable. The latter is expressly NOT the same as 'multivariate'
+cfdecomp is the package name
+Counterfactual and analytical are correctly written, as is multivariable. The latter is expressly NOT the same as 'multivariate'.
 
 
 Many thanks
