@@ -130,7 +130,7 @@ cfd.quantile <- function(formula.y,formula.m,mediator,group,
       (family.m[1]=='binomial') {data_mc[,mediator] <- rbinom(n,1,pred_mean_m)} else if
       (family.m[1]=='gaussian' & sample.resid.m==FALSE) {data_mc[,mediator] <- rnorm(n,pred_mean_m,sd=sd.ref.m)} else if
       (family.m[1]=='gaussian' & sample.resid.m==TRUE) {data_mc[,mediator] <- pred_mean_m + sample(resid.ref.m,n,replace=TRUE)}
-      temp_nc_m[ii,] <-  tapply(data_mc[,mediator], list(data_mc[,group]),mean,na.rm=T)
+      temp_nc_m[ii,] <-  tapply(data_mc[,mediator], list(data_mc[,group]),mean,na.rm=TRUE)
 
       # simulate outome
       pred_mean_y <- predict(bs_fit.y,data_mc,type='response')
@@ -138,7 +138,7 @@ cfd.quantile <- function(formula.y,formula.m,mediator,group,
       (family.y[1]=='binomial') {pred_y <- rbinom(n,1,pred_mean_y)} else if
       (family.y[1]=='gaussian' & sample.resid.y==FALSE) {pred_y <- rnorm(n,pred_mean_y,sd=sd.ref.y)} else if
       (family.y[1]=='gaussian' & sample.resid.y==TRUE) {pred_y <- pred_mean_y + sample(resid.ref.y,n,replace=TRUE)}
-      temp_nc_y[ii,] <-  tapply(pred_y, list(data_mc[,group]),quantile,probs=probs,na.rm=T)
+      temp_nc_y[ii,] <-  tapply(pred_y, list(data_mc[,group]),quantile,probs=probs,na.rm=TRUE)
 
       ## counterfactual simulation ##
       # equalize distribution of mediator
@@ -149,7 +149,7 @@ cfd.quantile <- function(formula.y,formula.m,mediator,group,
       (family.m[1]=='binomial') {data_mc[,mediator] <- rbinom(n,1,pred_mean_m)} else if
       (family.m[1]=='gaussian' & sample.resid.m==FALSE) {data_mc[,mediator] <- rnorm(n,pred_mean_m,sd=sd.ref.m)} else if
       (family.m[1]=='gaussian' & sample.resid.m==TRUE) {data_mc[,mediator] <- pred_mean_m + sample(resid.ref.m,n,replace=TRUE)}
-      temp_cf_m[ii,] <-  tapply(data_mc[,mediator], list(data_mc$truegroup),mean,na.rm=T)
+      temp_cf_m[ii,] <-  tapply(data_mc[,mediator], list(data_mc$truegroup),mean,na.rm=TRUE)
 
       # set group identifier back to true levels
       data_mc[,group] <- data_mc$truegroup
@@ -159,7 +159,7 @@ cfd.quantile <- function(formula.y,formula.m,mediator,group,
       (family.y[1]=='binomial') {pred_y <- rbinom(n,1,pred_mean_y)} else if
       (family.y[1]=='gaussian' & sample.resid.y==FALSE) {pred_y <- rnorm(n,pred_mean_y,sd=sd.ref.y)} else if
       (family.y[1]=='gaussian' & sample.resid.y==TRUE) {pred_y <- pred_mean_y + sample(resid.ref.y,n,replace=TRUE)}
-      temp_cf_y[ii,] <-  tapply(pred_y, list(data_mc$truegroup),quantile,probs=probs,na.rm=T)
+      temp_cf_y[ii,] <-  tapply(pred_y, list(data_mc$truegroup),quantile,probs=probs,na.rm=TRUE)
 
     }
 
@@ -171,10 +171,10 @@ cfd.quantile <- function(formula.y,formula.m,mediator,group,
     }
 
     ## save results for this bootstrap iteration
-    out_nc_m[i,] <- apply(temp_nc_m,2,mean,na.rm=T)
-    out_cf_m[i,] <- apply(temp_cf_m,2,mean,na.rm=T)
-    out_nc_y[i,] <- apply(temp_nc_y,2,mean,na.rm=T)
-    out_cf_y[i,] <- apply(temp_cf_y,2,mean,na.rm=T)
+    out_nc_m[i,] <- apply(temp_nc_m,2,mean,na.rm=TRUE)
+    out_cf_m[i,] <- apply(temp_cf_m,2,mean,na.rm=TRUE)
+    out_nc_y[i,] <- apply(temp_nc_y,2,mean,na.rm=TRUE)
+    out_cf_y[i,] <- apply(temp_cf_y,2,mean,na.rm=TRUE)
 
   }
   return(list(out_nc_m=out_nc_m,
@@ -188,7 +188,7 @@ cfd.quantile <- function(formula.y,formula.m,mediator,group,
               out_cf_quantile_y=apply(out_cf_y,2,quantile,c(alpha/2,0.5,1-alpha/2)),
 
               mediation=apply(1-(out_cf_y - out_nc_y[,1]) / (out_nc_y - out_nc_y[,1]),2,mean)[-1],
-              mediation_quantile=apply(1-(out_cf_y - out_nc_y[,1]) / (out_nc_y - out_nc_y[,1]),2,quantile,probs=c(alpha/2,1-alpha/2),na.rm=T)[,-1],
+              mediation_quantile=apply(1-(out_cf_y - out_nc_y[,1]) / (out_nc_y - out_nc_y[,1]),2,quantile,probs=c(alpha/2,1-alpha/2),na.rm=TRUE)[,-1],
 
               mc_conv_info_m=mc_conv_info_m,
               mc_conv_info_y=mc_conv_info_y

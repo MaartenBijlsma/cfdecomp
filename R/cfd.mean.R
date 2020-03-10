@@ -124,14 +124,14 @@ cfd.mean <- function(formula.y,formula.m,mediator,group,
       (family.m[1]=='binomial') {data_mc[,mediator] <- rbinom(n,1,pred_mean_m)} else if
       (family.m[1]=='gaussian' & sample.resid==FALSE) {data_mc[,mediator] <- rnorm(n,pred_mean_m,sd=sd.ref.m)} else if
       (family.m[1]=='gaussian' & sample.resid==TRUE) {data_mc[,mediator] <- pred_mean_m + sample(resid.ref.m,n,replace=TRUE)}
-      temp_nc_m[ii,] <-  tapply(data_mc[,mediator], list(data_mc[,group]),mean,na.rm=T)
+      temp_nc_m[ii,] <-  tapply(data_mc[,mediator], list(data_mc[,group]),mean,na.rm=TRUE)
 
       # simulate outome
       # ! Note that this function predicts means only because it compares means
       # ! Hence the entire distribution of values (of the outcome) is not re-created
       # ! If that is desired, see the function for the quantiles instead.
       pred_mc_nc <- predict(bs_fit.y,data_mc,type='response')
-      temp_nc_y[ii,] <-  tapply(pred_mc_nc, list(data_mc[,group]),mean,na.rm=T)
+      temp_nc_y[ii,] <-  tapply(pred_mc_nc, list(data_mc[,group]),mean,na.rm=TRUE)
 
       ## counterfactual simulation ##
       # equalize distribution of mediator
@@ -142,13 +142,13 @@ cfd.mean <- function(formula.y,formula.m,mediator,group,
       (family.m[1]=='binomial') {data_mc[,mediator] <- rbinom(n,1,pred_mean_m)} else if
       (family.m[1]=='gaussian' & sample.resid==FALSE) {data_mc[,mediator] <- rnorm(n,pred_mean_m,sd=sd.ref.m)} else if
       (family.m[1]=='gaussian' & sample.resid==TRUE) {data_mc[,mediator] <- pred_mean_m + sample(resid.ref.m,n,replace=TRUE)}
-      temp_cf_m[ii,] <-  tapply(data_mc[,mediator], list(data_mc$truegroup),mean,na.rm=T)
+      temp_cf_m[ii,] <-  tapply(data_mc[,mediator], list(data_mc$truegroup),mean,na.rm=TRUE)
 
       # set group identifier back to true levels
       data_mc[,group] <- data_mc$truegroup
       # simulate outcome
       pred_mc_cf <- predict(bs_fit.y,data_mc,type='response')
-      temp_cf_y[ii,] <-  tapply(pred_mc_cf, list(data_mc$truegroup),mean,na.rm=T)
+      temp_cf_y[ii,] <-  tapply(pred_mc_cf, list(data_mc$truegroup),mean,na.rm=TRUE)
 
     }
 
@@ -160,10 +160,10 @@ cfd.mean <- function(formula.y,formula.m,mediator,group,
     }
 
     ## save results for this bootstrap iteration
-    out_nc_m[i,] <- apply(temp_nc_m,2,mean,na.rm=T)
-    out_cf_m[i,] <- apply(temp_cf_m,2,mean,na.rm=T)
-    out_nc_y[i,] <- apply(temp_nc_y,2,mean,na.rm=T)
-    out_cf_y[i,] <- apply(temp_cf_y,2,mean,na.rm=T)
+    out_nc_m[i,] <- apply(temp_nc_m,2,mean,na.rm=TRUE)
+    out_cf_m[i,] <- apply(temp_cf_m,2,mean,na.rm=TRUE)
+    out_nc_y[i,] <- apply(temp_nc_y,2,mean,na.rm=TRUE)
+    out_cf_y[i,] <- apply(temp_cf_y,2,mean,na.rm=TRUE)
 
   }
   return(list(out_nc_m=out_nc_m,
@@ -177,7 +177,7 @@ cfd.mean <- function(formula.y,formula.m,mediator,group,
               out_cf_quantile_y=apply(out_cf_y,2,quantile,c(alpha/2,0.5,1-alpha/2)),
 
               mediation=apply(1-(out_cf_y - out_nc_y[,1]) / (out_nc_y - out_nc_y[,1]),2,mean)[-1],
-              mediation_quantile=apply(1-(out_cf_y - out_nc_y[,1]) / (out_nc_y - out_nc_y[,1]),2,quantile,probs=c(alpha/2,1-alpha/2),na.rm=T)[,-1],
+              mediation_quantile=apply(1-(out_cf_y - out_nc_y[,1]) / (out_nc_y - out_nc_y[,1]),2,quantile,probs=c(alpha/2,1-alpha/2),na.rm=TRUE)[,-1],
 
               mc_conv_info_m=mc_conv_info_m,
               mc_conv_info_y=mc_conv_info_y

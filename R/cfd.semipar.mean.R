@@ -72,7 +72,7 @@ cfd.semipar.mean <- function(formula,mediator,group,strata=NA,nbin=5,
     # ! Note that this function predicts means only because it compares means
     # ! Hence the entire distribution of values is not re-created
     # ! If that is desired, see the function for the quantiles instead.
-    out_nc[i,] <- tapply(pred_bs, list(data_bs[,group]),mean,na.rm=T)
+    out_nc[i,] <- tapply(pred_bs, list(data_bs[,group]),mean,na.rm=TRUE)
 
     ####
     ##
@@ -114,11 +114,11 @@ cfd.semipar.mean <- function(formula,mediator,group,strata=NA,nbin=5,
       }
 
       pred_bs_mc_counterfactual <- predict(bs_fit,data_bs_mc,type='response')
-      temp[ii,] <-  tapply(pred_bs_mc_counterfactual, list(data_bs_mc[,group]),mean,na.rm=T)
+      temp[ii,] <-  tapply(pred_bs_mc_counterfactual, list(data_bs_mc[,group]),mean,na.rm=TRUE)
 
     }
     ##
-    out_cf[i,] <- apply(temp,2,mean,na.rm=T)
+    out_cf[i,] <- apply(temp,2,mean,na.rm=TRUE)
 
   }
   return(list(out_nc=out_nc,
@@ -127,7 +127,7 @@ cfd.semipar.mean <- function(formula,mediator,group,strata=NA,nbin=5,
               out_cf_quantile=apply(out_cf,2,quantile,c(alpha/2,0.5,1-alpha/2)),
 
               mediation=apply(1-(out_cf - out_nc[,1]) / (out_nc - out_nc[,1]),2,mean)[-1],
-              mediation_quantile=apply(1-(out_cf - out_nc[,1]) / (out_nc - out_nc[,1]),2,quantile,probs=c(alpha/2,1-alpha/2),na.rm=T)[,-1]
+              mediation_quantile=apply(1-(out_cf - out_nc[,1]) / (out_nc - out_nc[,1]),2,quantile,probs=c(alpha/2,1-alpha/2),na.rm=TRUE)[,-1]
   )
   )
 }

@@ -3,7 +3,31 @@
 
 This is a first release of the cfdecomp package, which has so far only been available on github under the name cfdecomp
 
-Note that examples are encased in 'dontrun' because the examples take a long time to run, but these have been tested and they work.
+## Comments received from CRAN team member on March 10, 2020 with response:
+
+* Please shorten the title to a maximum of 65 characters. Acronyms/Abbreviations can be used on their own in the title as long as they are explained in the description field.
+  * The title has now been changed to 61 character (spaces included)
+
+* Please only capitalize names, sentence beginnings and
+abbreviations/acronyms in the description text of your DESCRIPTION file.
+F.i.: --> integration
+  * 'Integration', 'Working' and 'Paper' are now no longer capitalized. We believe these were all words that were incorrectly capitalized.
+
+* Please write references in the Description field of the DESCRIPTION file in the form authors (year) <doi:...>, authors (year) <arXiv:...>, authors (year, ISBN:...) or if those are not available: authors (year) <https:...>
+with no space after 'doi:', 'arXiv:', 'https:' and angle brackets for auto-linking. (If you want to add the title as well, quote it. --> "title")
+  * We now refer to Sudharsanan & Bijlsma (2019) with the digital object identifier added between angle brackets.
+
+* Please always write TRUE and FALSE instead of T and F. (Also never name your variables T or F.)
+  * All instances of =T were changed to =TRUE. Instances of =F were not found.
+
+* \dontrun{} should be only used if the example really cannot be executed
+(e.g. because of missing additional software, missing API keys, ...) by
+the user. That's why wrapping examples in \dontrun{} adds the comment
+("# Not run:") as a warning for the user.
+Please unwrap the examples if they are executable in < 5 sec, or create
+additionally small toy examples to allow automatic testing.
+You could also replace \dontrun{} with \donttest{}, but it would be
+preferable to have automatic checks for functions.
 
 ## Test environments
 
@@ -43,7 +67,7 @@ This is in order.
     multivariable (12:238)  
 
 Bijlsma and Sudharsanan are the authors names
-Counterfactual and analytical are correctly written, as is multivariable. The latter is expressly NOT the same as 'multivariate'
+Counterfactual and analytical are correctly written, as is multivariable. The latter is expressly NOT the same as 'multivariate'.
 
 
 Many thanks

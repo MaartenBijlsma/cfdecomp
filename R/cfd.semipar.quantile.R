@@ -83,7 +83,7 @@ cfd.semipar.quantile <- function(formula,mediator,group,strata=NA,nbin=5,
       # ! or if you want to age standardize, etc.
       # ! see also code below for the counterfactual predictions
 
-      temp.nc[ii,] <- tapply(pred_bs, list(data_bs[,group]),quantile,probs,probs,na.rm=T)
+      temp.nc[ii,] <- tapply(pred_bs, list(data_bs[,group]),quantile,probs,probs,na.rm=TRUE)
 
     }
     out_nc[i,] <- apply(temp.nc, 2, mean)
@@ -134,12 +134,12 @@ cfd.semipar.quantile <- function(formula,mediator,group,strata=NA,nbin=5,
       # ! And below the code will take quantiles for each group
       # ! Edit the code here if you want to take some other moment instead,
       # ! or if you want to age standardize, etc.
-      temp.cf[ii,] <-  tapply(pred_bs_mc_cf, list(data_bs_mc[,group]),quantile,probs=probs,na.rm=T)
+      temp.cf[ii,] <-  tapply(pred_bs_mc_cf, list(data_bs_mc[,group]),quantile,probs=probs,na.rm=TRUE)
 
     }
 
     ##
-    out_cf[i,] <- apply(temp.cf,2,mean,na.rm=T)
+    out_cf[i,] <- apply(temp.cf,2,mean,na.rm=TRUE)
 
   }
 
@@ -149,7 +149,7 @@ cfd.semipar.quantile <- function(formula,mediator,group,strata=NA,nbin=5,
               out_cf_quantile=apply(out_cf,2,quantile,c(alpha/2,0.5,1-alpha/2)),
 
               mediation=apply(1-(out_cf - out_nc[,1]) / (out_nc - out_nc[,1]),2,mean)[-1],
-              mediation_quantile=apply(1-(out_cf - out_nc[,1]) / (out_nc - out_nc[,1]),2,quantile,probs=c(alpha/2,1-alpha/2),na.rm=T)[,-1]
+              mediation_quantile=apply(1-(out_cf - out_nc[,1]) / (out_nc - out_nc[,1]),2,quantile,probs=c(alpha/2,1-alpha/2),na.rm=TRUE)[,-1]
 
   )
   )
