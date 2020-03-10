@@ -20,8 +20,8 @@
 #' @examples
 #' set.seed(100)
 #' # the decomposition functions in our package are computationally intensive
-#' # to make the example run quick, I perform it on a subsample (n=500) of the data:
-#' cfd.example.sample <- cfd.example.data[sample(500),]
+#' # to make the example run quick, I perform it on a subsample (n=250) of the data:
+#' cfd.example.sample <- cfd.example.data[sample(250),]
 #' mean.semipar.results.1 <- cfd.semipar.mean(formula='out.gauss ~ SES + med.gauss + med.binom + age',
 #'                                           mediator='med.gauss',
 #'                                           group='SES',
