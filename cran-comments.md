@@ -20,16 +20,10 @@ with no space after 'doi:', 'arXiv:', 'https:' and angle brackets for auto-linki
 * Please always write TRUE and FALSE instead of T and F. (Also never name your variables T or F.)
   * All instances of =T were changed to =TRUE. Instances of =F were not found.
 
-* \dontrun{} should be only used if the example really cannot be executed
-(e.g. because of missing additional software, missing API keys, ...) by
-the user. That's why wrapping examples in \dontrun{} adds the comment
-("# Not run:") as a warning for the user.
-Please unwrap the examples if they are executable in < 5 sec, or create
-additionally small toy examples to allow automatic testing.
-You could also replace \dontrun{} with \donttest{}, but it would be
-preferable to have automatic checks for functions.
+* \dontrun{} should be only used if the example really cannot be executed (e.g. because of missing additional software, missing API keys, ...) by the user. That's why wrapping examples in \dontrun{} adds the comment ("# Not run:") as a warning for the user. Please unwrap the examples if they are executable in < 5 sec, or create additionally small toy examples to allow automatic testing. You could also replace \dontrun{} with \donttest{}, but it would be preferable to have automatic checks for functions.
+  * The examples have been unwrapped and altered to run on a subsample of the data and with fewer mc and bs iterations so that they are executable in < 5 seconds.
 
-## Test environments
+## Test environments (re-tested on March 10, 2020, after implementing changes described above)
 
 * local test on Windows NT 6.1 (64-bit), R version 3.6.2 (2019-12-12)
 * Via win-builder on x86_64-w64-mingw32 (64-bit)
@@ -60,13 +54,16 @@ This is in order.
 
 2) Possibly mis-spelled words in DESCRIPTION:
 
-    Bijlsma (12:555)  
-    Counterfactual (3:25)  
-    Sudharsanan (12:541)  
-    analytical (12:311)  
-    multivariable (12:238)  
+    Bijlsma (11:671)
+    Counterfactual (3:8)
+    Sudharsanan (11:657)
+    analytical (11:431)
+    cfdecomp (11:14)
+    counterfactual (11:231)
+    multivariable (11:358) 
 
 Bijlsma and Sudharsanan are the authors names
+cfdecomp is the package name
 Counterfactual and analytical are correctly written, as is multivariable. The latter is expressly NOT the same as 'multivariate'.
 
 

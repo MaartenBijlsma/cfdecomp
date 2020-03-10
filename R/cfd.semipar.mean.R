@@ -17,7 +17,24 @@
 #'
 #' @return \code{out_nc} returns the mean level of the outcome under the natural course, which is a value that should be close to the empirically observed value of the outcome for each group. \code{out_nc_quantile} provides the \code{alpha/2} and \code{1-alpha/2} bootstrap quantiles for this mean (AKA bootstrap percentile confidence intervals).Similarly, \code{out_cf}, \code{out_cf_quantile},provide the corresponding values for the counterfactual scenario where the mediators of the groups are equalized. \code{mediation} returns the proportion mediated by setting the intervened on mediator to be equal in level to the reference group and \code{mediation_quantile} returns the 1-alpha confidence interval.
 #' @export
-#'
+#' @examples
+#' set.seed(100)
+#' # the decomposition functions in our package are computationally intensive
+#' # to make the example run quick, I perform it on a subsample (n=500) of the data:
+#' cfd.example.sample <- cfd.example.data[sample(500),]
+#' mean.semipar.results.1 <- cfd.semipar.mean(formula='out.gauss ~ SES + med.gauss + med.binom + age',
+#'                                           mediator='med.gauss',
+#'                                           group='SES',
+#'                                           strata='age',
+#'                                           nbin=5,
+#'                                           data=cfd.example.sample,
+#'                                           family='gaussian',
+#'                                           bs.size=50,
+#'                                           mc.size=10,
+#'                                           alpha=0.05)
+#' # also note that normally we would recommend an bs.size of 250+
+#' # and an mc.size of 50+
+#' # see README.md for a more detailed description of the functions in this package.
 #' @import stats
 cfd.semipar.mean <- function(formula,mediator,group,strata=NA,nbin=5,
                              data,
