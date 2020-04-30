@@ -1,6 +1,8 @@
 
 # cfdecomp v0.2.0
 
+## Test environments (re-tested on April 30, 2020)
+
 * local test on Windows NT 6.1 (64-bit), R version 3.6.2 (2019-12-12)
 * Via win-builder on x86_64-w64-mingw32 (64-bit)
   * R Under development (unstable) (2020-01-28 r77738)

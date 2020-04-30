@@ -27,7 +27,7 @@
 #' set.seed(100)
 #' # the decomposition functions in our package are computationally intensive
 #' # to make the example run quick, I perform it on a subsample (n=250) of the data:
-#' # cfd.example.sample <- cfd.example.data[sample(250),]
+#' cfd.example.sample <- cfd.example.data[sample(250),]
 #' # define some function (here one that calculates the mean from the data)
 #' # such a function already exists, but this is to demonstrate how to do it for one that
 #' # will be implemented in cfd.FUN:
