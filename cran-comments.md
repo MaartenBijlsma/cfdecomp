@@ -1,6 +1,8 @@
 
 # cfdecomp v0.2.0
 
+This is the second release of the cfdecomp package, which adds two functions and some functionality to existing functions.
+
 ## Test environments (re-tested on April 30, 2020)
 
 * local test on Windows NT 6.1 (64-bit), R version 3.6.2 (2019-12-12)
@@ -11,10 +13,19 @@
 	* Ubuntu Linux 16.04 LTS, R-release, GCC
 	* Fedora Linux, R-devel, clang, gfortran
 * via R travis-ci Ubuntu 16.04.6 LTS
-	* R version 3.6.2 (2017-01-27)
+	* R version 4.0.0 (2020-04-24)
 
+## R CMD check result
+All of the above were OK and returned
 
+0 errors | 0 warnings | 1 notes 
 
+  New maintainer:
+    Maarten Jacob Bijlsma <maarten.bijlsma@gmail.com>
+  Old maintainer(s):
+    Maarten Bijlsma <maarten.bijlsma@gmail.com>
+    
+This is in order: I prefer to include my middle name if possible.
 
 # cfdecomp v0.1.0
 
