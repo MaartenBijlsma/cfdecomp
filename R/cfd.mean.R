@@ -12,6 +12,8 @@
 #' @param family.m a description of the error distribution to be used in the model, see \code{\link{family}} for details. For the mediator, currently \code{gaussian}, \code{binomial} and \code{poisson} are supported.
 #' @param bs.size the number of bootstrap iterations to be performed.
 #' @param mc.size the number of Monte Carlo iterations to be performed (more = more MC error reduction).
+#' @param cluster.sample set to TRUE if data are clustered in the long format (i.e. multiple rows per individual or other cluster).
+#' @param cluster.name the name (as a character) of the column containing the cluster identifiers.
 #' @param alpha the alpha level used to construct confidence intervals (0.05 = 95 percent confidence interval).
 #' @param sample.resid if the \code{mediator} is Gaussian, should the simulation sample from the residuals of the linear regression model of the mediator to approximate the empirical distribution of the mediator in the simulation (Monte Carlo integration) (if so, set to \code{TRUE}), or should it sample from a Gaussian distribution with the standard deviation of the mediator? If the true distribution of the continuous mediator is not very Gaussian, the former may be preferred.
 #' @param print.iteration print the bootstrap iteration
@@ -33,8 +35,10 @@
 #'                            family.m='gaussian',
 #'                            bs.size=50,
 #'                            mc.size=10,
-#'                            alpha=0.05)
-#' # also note that normally we would recommend an bs.size of 250+
+#'                            alpha=0.05,
+#'                            cluster.sample=TRUE,
+#'                            cluster.name='id')
+#' # also note that normally we would recommend a bs.size of 250+
 #' # and an mc.size of 50+
 #' # let's interpret the output of this function:
 #' mean(mean.results.1$out_nc_y[,2] - mean.results.1$out_nc_y[,1])
@@ -54,15 +58,16 @@
 #' @import stats
 #'
 #'
-cfd.mean <- function(formula.y,formula.m,mediator,group,
-                     data,
-                     family.y = 'binomial',
-                     family.m = 'binomial',
-                     bs.size = 1000,
-                     mc.size=50,
-                     alpha=0.05,
-                     sample.resid=FALSE,
-                     print.iteration=FALSE) {
+cfd.mean <- function (formula.y, formula.m, mediator, group, data,
+                      family.y = "binomial",
+                      family.m = "binomial",
+                      bs.size = 1000,
+                      mc.size = 50,
+                      alpha = 0.05,
+                      cluster.sample = FALSE,
+                      cluster.name = NA,
+                      sample.resid = FALSE,
+                      print.iteration = FALSE) {
 
   ## envir check
   call <- match.call()
@@ -98,8 +103,12 @@ cfd.mean <- function(formula.y,formula.m,mediator,group,
     if(print.iteration==TRUE){print(i)}
 
     ## resampling
-    resample_ind <- sample(nrow(data), replace=TRUE)
-    data_bs <- data[resample_ind,]
+    if (cluster.sample == FALSE) {
+      resample_ind <- sample(nrow(data), replace = TRUE)
+      data_bs <- data[resample_ind, ]
+    } else if (cluster.sample == TRUE) {
+      data_bs <- cluster.resample(data, cluster.name, size=length(unique(data[,cluster.name])))
+    }
 
     ## refit models for y and m
     bs_fit.y <- update(ini_fit.y, data = data_bs)

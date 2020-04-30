@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# cfdecomp v0.1.0
+# cfdecomp v0.2.0
 
 <!-- badges: start -->
 
