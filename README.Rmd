@@ -13,13 +13,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-# cfdecomp v0.1.0
+# cfdecomp v0.2.0
 
 <!-- badges: start -->
 [![Build Status](https://travis-ci.com/MaartenBijlsma/cfdecomp.svg?branch=master)](https://travis-ci.com/MaartenBijlsma/cfdecomp)
 <!-- badges: end -->
 
-cfdecomp stands for 'counterfactual decomposition'. This package provides functions to decompose differences in an outcome attributable to a mediating variable (or sets of mediating variables) between groups based on counterfactual (causal inference) theory. By using Monte Carlo (MC) integration (simulations based on empirical estimates from multivariable models) we provide added flexibility compared to existing (analytical) approaches, at the cost of computational power or time. The added flexibility means that we can decompose difference between groups in any outcome or and with any mediator (any variable type and distribution). See Sudharsanan & Bijlsma (2019) <doi:10.4054/MPIDR-WP-2019-004> for more information.
+cfdecomp stands for 'counterfactual decomposition'. This package provides functions to decompose differences in an outcome attributable to a mediating variable (or sets of mediating variables) between groups based on counterfactual (causal inference) theory. By using Monte Carlo (MC) integration (simulations based on empirical estimates from multivariable models) we provide added flexibility compared to existing (analytical) approaches, at the cost of computational power or time. The added flexibility means that we can decompose difference between groups in any outcome or and with any mediator (any variable type and distribution). See [Sudharsanan & Bijlsma (2019)](https://dx.doi.org/10.4054/MPIDR-WP-2019-004) for more information.
 
 ## Installation
 
@@ -250,6 +250,10 @@ quantile.semipar.results.1 <- cfd.semipar.quantile(formula='out.gauss ~ SES + me
                                            mc.size=50,
                                            alpha=0.05,
                                            probs=0.50)
+
+# for examples of the functions cluster.resample and cluster.id being used in cfd.mean and cfd.quantile
+# please see the help files of those individual functions
+# for an example of cfd.FUN, please see the help file of that individual function.
 
 ```
 

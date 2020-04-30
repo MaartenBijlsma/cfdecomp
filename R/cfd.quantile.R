@@ -14,6 +14,8 @@
 #' @param mc.size the number of Monte Carlo iterations to be performed (more = more MC error reduction).
 #' @param alpha the alpha level used to construct confidence intervals (0.05 = 95 percent confidence interval).
 #' @param probs the quantiles of interest to be decomposed, should be values between 0 and 1.
+#' @param cluster.sample set to TRUE if data are clustered in the long format (i.e. multiple rows per individual or other cluster).
+#' @param cluster.name the name (as a character) of the column containing the cluster identifiers.
 #' @param sample.resid.y sample.resid if the \code{outcome} is Gaussian, should the simulation sample from the residuals of the linear regression model of the outcome to approximate the empirical distribution of the outcome in the simulation (Monte Carlo integration) (if so, set to \code{TRUE}), or should it sample from a Gaussian distribution with the standard deviation of the outcome? If the true distribution of the continuous outcome is not very Gaussian, the former may be preferred.
 #' @param sample.resid.m sample.resid if the \code{mediator} is Gaussian, should the simulation sample from the residuals of the linear regression model of the mediator to approximate the empirical distribution of the mediator in the simulation (Monte Carlo integration) (if so, set to \code{TRUE}), or should it sample from a Gaussian distribution with the standard deviation of the mediator? If the true distribution of the continuous mediator is not very Gaussian, the former may be preferred.
 #' @param print.iteration print the bootstrap iteration
@@ -23,8 +25,8 @@
 #' @examples
 #' set.seed(100)
 #' # the decomposition functions in our package are computationally intensive
-#' # to make the example run quick, I perform it on a subsample (n=500) of the data:
-#' cfd.example.sample <- cfd.example.data[sample(500),]
+#' # to make the example run quick, I perform it on a subsample (n=250) of the data:
+#' cfd.example.sample <- cfd.example.data[sample(250),]
 #' quantile.results.1 <- cfd.quantile(formula.y='out.gauss ~ SES + med.gauss + med.binom + age',
 #'                                   formula.m='med.gauss ~ SES + age',
 #'                                   mediator='med.gauss',
@@ -54,7 +56,7 @@
 #' # and we can get the 1-alpha CI for each:
 #' quantile.results.1$mediation_quantile
 #' # see README.md for a more detailed description of the functions in this package.
-#' @import stats
+#' @import stats utils
 #'
 #'
 cfd.quantile <- function(formula.y,formula.m,mediator,group,
@@ -65,6 +67,8 @@ cfd.quantile <- function(formula.y,formula.m,mediator,group,
                          mc.size=50,
                          alpha=0.05,
                          probs=0.50,
+                         cluster.sample=FALSE,
+                         cluster.name=NA,
                          sample.resid.y=FALSE,
                          sample.resid.m=FALSE,
                          print.iteration=FALSE) {
@@ -103,8 +107,12 @@ cfd.quantile <- function(formula.y,formula.m,mediator,group,
     if(print.iteration==TRUE){print(i)}
 
     ## resampling
-    resample_ind <- sample(nrow(data), replace=TRUE)
-    data_bs <- data[resample_ind,]
+    if (cluster.sample == FALSE) {
+      resample_ind <- sample(nrow(data), replace = TRUE)
+      data_bs <- data[resample_ind, ]
+    } else if (cluster.sample == TRUE) {
+      data_bs <- cluster.resample(data, cluster.name, size=length(unique(data[,cluster.name])))
+    }
 
     ## refit models for y and m
     bs_fit.y <- update(ini_fit.y, data = data_bs)
