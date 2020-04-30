@@ -1,7 +1,7 @@
 Package: cfdecomp
 Type: Package
 Title: Counterfactual Decomposition: MC Integration of the G-Formula
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: c(
     person("Maarten Jacob", "Bijlsma", role=c("aut", "cre"), email=  "maarten.bijlsma@gmail.com"),
     person("Nikkil", "Sudharsanan", role=c("aut")),

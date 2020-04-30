@@ -15,6 +15,8 @@ cfd.mean(
   bs.size = 1000,
   mc.size = 50,
   alpha = 0.05,
+  cluster.sample = FALSE,
+  cluster.name = NA,
   sample.resid = FALSE,
   print.iteration = FALSE
 )
@@ -40,6 +42,10 @@ cfd.mean(
 
 \item{alpha}{the alpha level used to construct confidence intervals (0.05 = 95 percent confidence interval).}
 
+\item{cluster.sample}{set to TRUE if data are clustered in the long format (i.e. multiple rows per individual or other cluster).}
+
+\item{cluster.name}{the name (as a character) of the column containing the cluster identifiers.}
+
 \item{sample.resid}{if the \code{mediator} is Gaussian, should the simulation sample from the residuals of the linear regression model of the mediator to approximate the empirical distribution of the mediator in the simulation (Monte Carlo integration) (if so, set to \code{TRUE}), or should it sample from a Gaussian distribution with the standard deviation of the mediator? If the true distribution of the continuous mediator is not very Gaussian, the former may be preferred.}
 
 \item{print.iteration}{print the bootstrap iteration}
@@ -64,7 +70,9 @@ mean.results.1 <- cfd.mean(formula.y='out.gauss ~ SES + med.gauss + med.binom + 
                            family.m='gaussian',
                            bs.size=50,
                            mc.size=10,
-                           alpha=0.05)
+                           alpha=0.05,
+                           cluster.sample=TRUE,
+                           cluster.name='id')
 # also note that normally we would recommend a bs.size of 250+
 # and an mc.size of 50+
 # let's interpret the output of this function:

@@ -16,6 +16,8 @@ cfd.quantile(
   mc.size = 50,
   alpha = 0.05,
   probs = 0.5,
+  cluster.sample = FALSE,
+  cluster.name = NA,
   sample.resid.y = FALSE,
   sample.resid.m = FALSE,
   print.iteration = FALSE
@@ -43,6 +45,10 @@ cfd.quantile(
 \item{alpha}{the alpha level used to construct confidence intervals (0.05 = 95 percent confidence interval).}
 
 \item{probs}{the quantiles of interest to be decomposed, should be values between 0 and 1.}
+
+\item{cluster.sample}{set to TRUE if data are clustered in the long format (i.e. multiple rows per individual or other cluster).}
+
+\item{cluster.name}{the name (as a character) of the column containing the cluster identifiers.}
 
 \item{sample.resid.y}{sample.resid if the \code{outcome} is Gaussian, should the simulation sample from the residuals of the linear regression model of the outcome to approximate the empirical distribution of the outcome in the simulation (Monte Carlo integration) (if so, set to \code{TRUE}), or should it sample from a Gaussian distribution with the standard deviation of the outcome? If the true distribution of the continuous outcome is not very Gaussian, the former may be preferred.}
 

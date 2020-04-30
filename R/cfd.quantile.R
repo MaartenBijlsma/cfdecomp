@@ -56,7 +56,7 @@
 #' # and we can get the 1-alpha CI for each:
 #' quantile.results.1$mediation_quantile
 #' # see README.md for a more detailed description of the functions in this package.
-#' @import stats
+#' @import stats utils
 #'
 #'
 cfd.quantile <- function(formula.y,formula.m,mediator,group,

@@ -20,12 +20,17 @@ returns a new dataframe with resampled clusters
 Cluster Resampling: resampling long format longitudinal or otherwise clustered data
 }
 \examples{
-table(cfd.example.data$id) # every ID appears 5 times
-cfd.example.sample <- cluster.resample(cfd.example.data, cluster.name='id', size=length(unique(cfd.example.data[,'id'])))
-table(cfd.example.sample$id) # some ID's now don't appear, and some appear more times (multiples of 5)
+table(cfd.example.data$id)
+# every ID appears 5 times
+cfd.example.sample <- cluster.resample(cfd.example.data, cluster.name='id',
+size=length(unique(cfd.example.data[,'id'])))
+table(cfd.example.sample$id)
+# some ID's now don't appear, and some appear more times (multiples of 5)
 # the important part is that if a person (id) is resampled, all their rows of data are taken
 # i.e. the function resamples clusters, rather than rows.
-# this has produced 1 resample, so generally this function would be used inside a loop where it is used multiple times
-# we use this function inside our decomposition functions when cluster.sample is set to TRUE in those functions.
+# this has produced 1 resample, so generally this function would be used
+# inside a loop where it is used multiple times
+# we use this function inside our decomposition functions when cluster.sample is
+# set to TRUE in those functions.
 
 }

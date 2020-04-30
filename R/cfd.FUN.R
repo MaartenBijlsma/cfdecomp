@@ -25,9 +25,9 @@
 #'
 #' @examples
 #' set.seed(100)
-#' the decomposition functions in our package are computationally intensive
-#' to make the example run quick, I perform it on a subsample (n=250) of the data:
-#' cfd.example.sample <- cfd.example.data[sample(250),]
+#' # the decomposition functions in our package are computationally intensive
+#' # to make the example run quick, I perform it on a subsample (n=250) of the data:
+#' # cfd.example.sample <- cfd.example.data[sample(250),]
 #' # define some function (here one that calculates the mean from the data)
 #' # such a function already exists, but this is to demonstrate how to do it for one that
 #' # will be implemented in cfd.FUN:
@@ -36,13 +36,13 @@
 #' return(mean(x[,yname],na.rm=TRUE))
 #' }
 #' # test if the function works on normal data:
-#' mean.fun(cfd.example.data,yname="med.pois")
+#' mean.fun(cfd.example.sample,yname="med.pois")
 #' # then enter it into cfd.FUN and run:
-#' mean.results.2 <- cfd.FUN(formula.y='out.gauss ~ SES + med.gauss + med.binom + age',
+#' mean.results <- cfd.FUN(formula.y='out.gauss ~ SES + med.gauss + med.binom + age',
 #'                           formula.m='med.gauss ~ SES + age',
 #'                           mediator='med.gauss',
 #'                           group='SES',
-#'                           data=cfd.example.data,
+#'                           data=cfd.example.sample,
 #'                           family.y='gaussian',
 #'                           family.m='gaussian',
 #'                           FUN.y=mean.fun,
@@ -54,10 +54,11 @@
 #' # more advanced code demonstrating how to do this with a function that calculates
 #' # the age-adjusted rate ratio and life expectancy will hopefully soon be available
 #' # in a publication.
+#' #' @import stats utils
 cfd.FUN <- function (formula.y, formula.m, mediator, group,data,
                      family.y = "binomial",
                      family.m = "binomial",
-                     bs.size = 1000,
+                     bs.size = 250,
                      mc.size = 50,
                      FUN.y=mean,
                      alpha = 0.05,

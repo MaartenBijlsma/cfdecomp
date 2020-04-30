@@ -12,9 +12,9 @@
 #' @param family.m a description of the error distribution to be used in the model, see \code{\link{family}} for details. For the mediator, currently \code{gaussian}, \code{binomial} and \code{poisson} are supported.
 #' @param bs.size the number of bootstrap iterations to be performed.
 #' @param mc.size the number of Monte Carlo iterations to be performed (more = more MC error reduction).
+#' @param alpha the alpha level used to construct confidence intervals (0.05 = 95 percent confidence interval).
 #' @param cluster.sample set to TRUE if data are clustered in the long format (i.e. multiple rows per individual or other cluster).
 #' @param cluster.name the name (as a character) of the column containing the cluster identifiers.
-#' @param alpha the alpha level used to construct confidence intervals (0.05 = 95 percent confidence interval).
 #' @param sample.resid if the \code{mediator} is Gaussian, should the simulation sample from the residuals of the linear regression model of the mediator to approximate the empirical distribution of the mediator in the simulation (Monte Carlo integration) (if so, set to \code{TRUE}), or should it sample from a Gaussian distribution with the standard deviation of the mediator? If the true distribution of the continuous mediator is not very Gaussian, the former may be preferred.
 #' @param print.iteration print the bootstrap iteration
 #'
@@ -55,7 +55,7 @@
 #' # and we can get the 1-alpha CI for each:
 #' mean.results.1$mediation_quantile
 #' # see README.md for a more detailed description of the functions in this package.
-#' @import stats
+#' @import stats utils
 #'
 #'
 cfd.mean <- function (formula.y, formula.m, mediator, group, data,
