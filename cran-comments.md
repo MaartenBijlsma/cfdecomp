@@ -6,10 +6,9 @@ This is the second release of the cfdecomp package, which adds two functions and
 ## Test environments (re-tested on April 30, 2020)
 
 * local test on Windows NT 6.1 (64-bit), R version 3.6.2 (2019-12-12)
-* Via win-builder on x86_64-w64-mingw32 (64-bit)
-  * R Under development (unstable) (2020-01-28 r77738)
-* via devtools::rhub()
-	* Windows Server 2008 R2 SP1, R-devel, 32/64 bit
+* Via check_win_devel()
+  * Windows Server 2008 R2 SP1, R-devel, 32/64 bit
+* via devtools::check_rhub()
 	* Ubuntu Linux 16.04 LTS, R-release, GCC
 	* Fedora Linux, R-devel, clang, gfortran
 * via R travis-ci Ubuntu 16.04.6 LTS
@@ -26,6 +25,9 @@ All of the above were OK and returned
     Maarten Bijlsma <maarten.bijlsma@gmail.com>
     
 This is in order: I prefer to include my middle name if possible.
+
+
+
 
 # cfdecomp v0.1.0
 
