@@ -24,7 +24,7 @@ All of the above were OK and returned
   Old maintainer(s):
     Maarten Bijlsma <maarten.bijlsma@gmail.com>
     
-This is in order: I prefer to include my middle name if possible.
+This is in order: I normally include my middle name in publications. Not including it was an oversight in the first version. Since I have not yet advertised the package and it has not been referred to yet in publications, I hope this is OK.
 
 
 

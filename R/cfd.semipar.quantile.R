@@ -21,8 +21,8 @@
 #' @examples
 #' set.seed(100)
 #' # the decomposition functions in our package are computationally intensive
-#' # to make the example run quick, I perform it on a subsample (n=250) of the data:
-#' cfd.example.sample <- cfd.example.data[sample(250),]
+#' # to make the example run quick, I perform it on a subsample (n=175) of the data:
+#' cfd.example.sample <- cfd.example.data[sample(175),]
 #' quantile.semipar.results.1 <- cfd.semipar.quantile(formula='out.gauss ~ SES +
 #'                                                   med.gauss + med.binom + age',
 #'                                                   mediator='med.gauss',

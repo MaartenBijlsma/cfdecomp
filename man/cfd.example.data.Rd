@@ -4,7 +4,8 @@
 \name{cfd.example.data}
 \alias{cfd.example.data}
 \title{Example Data for the cfdecomp package}
-\format{a dataframe with 6 columns, which are:
+\format{
+a dataframe with 6 columns, which are:
 \describe{
 \item{SES}{a factor variable with 3 levels, denoting three groups to be compared. SES stands for socio-economic status.}
 \item{age}{a continuous variable going from 40 to 65. Age could stand for age in years.}
@@ -13,7 +14,8 @@
 \item{med.pois}{a mediator that is a count variable and poisson distributed.}
 \item{out.gauss}{an outcome that is a continuous variable and normally distributed.}
 \item{id}{a variable with cluster id information}
-}}
+}
+}
 \usage{
 cfd.example.data
 }
