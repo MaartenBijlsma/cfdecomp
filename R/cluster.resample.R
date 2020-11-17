@@ -50,9 +50,7 @@ cluster.resample <- function(data, cluster.name, size) {
         newdata <- rbind(newdata,data[which(data[,cluster.name] %in% selectID2),])
 
       }
-
     }
-
-    return(newdata)
   }
+  return(newdata)
 }
