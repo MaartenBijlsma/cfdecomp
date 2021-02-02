@@ -59,8 +59,8 @@ Decompose the mean difference in outcome Y between groups.
 \examples{
 set.seed(100)
 # the decomposition functions in our package are computationally intensive
-# to make the example run quick, I perform it on a subsample (n=250) of the data:
-cfd.example.sample <- cfd.example.data[sample(250),]
+# to make the example run quick, I perform it on a subsample (n=125) of the data:
+cfd.example.sample <- cfd.example.data[sample(125),]
 mean.results.1 <- cfd.mean(formula.y='out.gauss ~ SES + med.gauss + med.binom + age',
                            formula.m='med.gauss ~ SES + age',
                            mediator='med.gauss',

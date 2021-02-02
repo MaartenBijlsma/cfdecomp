@@ -4,10 +4,28 @@
 This is the third release of the cfdecomp package, which fixes a bug in the cluster.resample function.
 
 ## Test environments (re-tested on February 2, 2021)
-
+* local test on Windows NT 6.1 (64-bit), R version 4.0.2 (2020-06-22)
+* Via check_win_devel()
+  * R Under development (unstable) (2021-01-31 r79912), 64 bit
+* Via check_win_release()
+  * R version 4.0.3 (2020-10-10), 64 bit
+* via devtools::check_rhub()
+  * Windows Server 2008 R2 SP1, R-devel, 32/64 bit
+  * Ubuntu Linux 20.04.1 LTS, R-release, GCC
+  * Fedora Linux, R-devel, clang, gfortran
+* via R travis-ci Ubuntu 16.04.6 LTS
+	* R version 4.0.2 (2020-06-22)
 
 ## R CMD check result
+All of the above except one were OK and returned
 
+0 errors | 0 warnings | 0 notes 
+
+One (Ubuntu Linux 20.04.1 LTS, R-release, GCC) returned 0 errors, 0 warnings, and 1 note:
+
+"Examples with CPU (user + system) or elapsed time > 5s"
+
+The elapsed time was between 6 and 7 seconds.
 
 
 
