@@ -1,4 +1,17 @@
 
+# cfdecomp v0.3.0
+
+This is the third release of the cfdecomp package, which fixes a bug in the cluster.resample function.
+
+## Test environments (re-tested on February 2, 2021)
+
+
+## R CMD check result
+
+
+
+
+
 # cfdecomp v0.2.0
 
 This is the second release of the cfdecomp package, which adds two functions and some functionality to existing functions.

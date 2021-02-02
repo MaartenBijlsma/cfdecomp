@@ -1,4 +1,8 @@
 
+# cfdecomp v0.3.0
+
+This is the third release of the cfdecomp package. Compared to version 2, this new version has a bug fix which only showed up when cluster resampling was used and due to sample size, no cluster was resampled more than once.
+
 # cfdecomp v0.2.0
 
 This is a second release of the cfdecomp package. Compared to version 1, this new version now has three added functions and added functionality to existing functions.

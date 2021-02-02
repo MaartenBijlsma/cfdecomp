@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# cfdecomp v0.2.0
+# cfdecomp v0.3.0
 
 <!-- badges: start -->
 
@@ -35,6 +35,7 @@ install.packages("cfdecomp")
 
 ``` r
 library(cfdecomp)
+#> Warning: package 'cfdecomp' was built under R version 4.0.3
 
 formula.y.example <- 'out.gauss ~ med.gauss + age + med.binom'
 formula.m.example <- 'med.gauss ~ age'
@@ -64,7 +65,7 @@ abline(v=mean(cfd.example.data$med.gauss[cfd.example.data$SES==1]),lwd=4)
 ``` r
 # approximation of the mean of M over the Monte Carlo iterations for SES group 1:
 mean(mean.results.1$out_nc_m[,1])
-#> [1] 8.166413
+#> [1] 8.160594
 # empirical mean of mediator M for SES group 1:
 mean(cfd.example.data$med.gauss[cfd.example.data$SES==1])
 #> [1] 8.163461
@@ -81,7 +82,7 @@ abline(v=mean(cfd.example.data$med.gauss[cfd.example.data$SES==2]),lwd=4)
 
 ``` r
 mean(mean.results.1$out_nc_m[,2]);mean(cfd.example.data$med.gauss[cfd.example.data$SES==2])
-#> [1] 7.181744
+#> [1] 7.179294
 #> [1] 7.186521
 # conclusion: also for group 2, approximation is good
 
@@ -96,7 +97,7 @@ abline(v=mean(cfd.example.data$med.gauss[cfd.example.data$SES==3]),lwd=4)
 
 ``` r
 mean(mean.results.1$out_nc_m[,3]);mean(cfd.example.data$med.gauss[cfd.example.data$SES==3])
-#> [1] 5.377593
+#> [1] 5.377426
 #> [1] 5.376548
 # conclusion: also for group 3, approximation of M is good
 
@@ -112,7 +113,7 @@ abline(v=mean(cfd.example.data$out.gauss[cfd.example.data$SES==1]),lwd=4)
 
 ``` r
 mean(mean.results.1$out_nc_y[,1]);mean(cfd.example.data$out.gauss[cfd.example.data$SES==1])
-#> [1] 4.147698
+#> [1] 4.143651
 #> [1] 4.145881
 # conclusion: on average, our distributions of means of Y centers on the empirical distribution of Y 
 
@@ -127,7 +128,7 @@ abline(v=mean(cfd.example.data$out.gauss[cfd.example.data$SES==2]),lwd=4)
 
 ``` r
 mean(mean.results.1$out_nc_y[,2]);mean(cfd.example.data$out.gauss[cfd.example.data$SES==2])
-#> [1] 3.28048
+#> [1] 3.282936
 #> [1] 3.284409
 # conclusion: also for group 2, approximation of Y is good
 
@@ -142,7 +143,7 @@ abline(v=mean(cfd.example.data$out.gauss[cfd.example.data$SES==3]),lwd=4)
 
 ``` r
 mean(mean.results.1$out_nc_y[,3]);mean(cfd.example.data$out.gauss[cfd.example.data$SES==3])
-#> [1] 2.226078
+#> [1] 2.224944
 #> [1] 2.227222
 # conclusion: also for group 3, approximation of Y is good
 
@@ -151,26 +152,26 @@ mean(mean.results.1$out_nc_y[,3]);mean(cfd.example.data$out.gauss[cfd.example.da
 # estimate the effect of the intervention and proportion mediated (decomposition)
 # the differences between SES groups 1 and 2 were first:
 mean(mean.results.1$out_nc_y[,2] - mean.results.1$out_nc_y[,1])
-#> [1] -0.8672176
+#> [1] -0.8607148
 # and after giving the gaussian mediator of SES group 2 the distribution of the one in group 1
 # the difference becomes:
 mean(mean.results.1$out_cf_y[,2] - mean.results.1$out_nc_y[,1])
-#> [1] -0.6582674
+#> [1] -0.6525706
 # so the proportion of the outcome Y that is due to differences between the two SES groups in the gaussian mediator is
 mean(1-(mean.results.1$out_cf_y[,2] - mean.results.1$out_nc_y[,1]) / (mean.results.1$out_nc_y[,2] - mean.results.1$out_nc_y[,1]))
-#> [1] 0.2412226
+#> [1] 0.2423695
 # we can also get this number, and the one from the comparison of the other SES group with group 1, straight from the object
 mean.results.1$mediation
 #>         2         3 
-#> 0.2412226 0.3067384
+#> 0.2423695 0.3060078
 # you'll notice the first number is the same as the one we calculated ourselves from the output
 # this is the proportion mediated when coming the first and the second SES group
 # the second number is the proportion mediated when comparing the first and the third SES group
 # and we can get the 1-alpha confidence intervals for each:
 mean.results.1$mediation_quantile
 #>               2         3
-#> 2.5%  0.2101112 0.2812851
-#> 97.5% 0.2788443 0.3319271
+#> 2.5%  0.2073320 0.2793016
+#> 97.5% 0.2869604 0.3320278
 
 # if a mediator is binomial distributed
 mean.results.2 <- cfd.mean(formula.y='out.gauss ~ med.pois + age + med.binom',
@@ -362,7 +363,7 @@ quantile.semipar.results.1 <- cfd.semipar.quantile(formula='out.gauss ~ SES + me
                                            mc.size=50,
                                            alpha=0.05,
                                            probs=0.50)
-                                           
+
 # for examples of the functions cluster.resample and cluster.id being used in cfd.mean and cfd.quantile
 # please see the help files of those individual functions
 # for an example of cfd.FUN, please see the help file of that individual function.

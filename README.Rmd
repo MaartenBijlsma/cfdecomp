@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# cfdecomp v0.2.0
+# cfdecomp v0.3.0
 
 <!-- badges: start -->
 [![Build Status](https://travis-ci.com/MaartenBijlsma/cfdecomp.svg?branch=master)](https://travis-ci.com/MaartenBijlsma/cfdecomp)
