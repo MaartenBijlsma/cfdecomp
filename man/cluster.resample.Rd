@@ -4,14 +4,16 @@
 \alias{cluster.resample}
 \title{Cluster Resampling: resampling long format longitudinal or otherwise clustered data}
 \usage{
-cluster.resample(data, cluster.name, size)
+cluster.resample(data, cluster.name, size = NA, newID = FALSE)
 }
 \arguments{
 \item{data}{a data frame containing the variables in the model.}
 
 \item{cluster.name}{the name (as a character) of the column containing the cluster identifiers.}
 
-\item{size}{a non-negative integer giving the number of items to choose, i.e. the number of clusters to resample.}
+\item{size}{a non-negative integer giving the number of items to choose, i.e. the number of clusters to resample. If not specified, takes the original data cluster size.}
+
+\item{newID}{if set to TRUE, gives each replicant a new ID, rather than having the old ID appear multiple times. This might be needed if you work with e.g. cluster fixed effects}
 }
 \value{
 returns a new dataframe with resampled clusters
@@ -22,8 +24,7 @@ Cluster Resampling: resampling long format longitudinal or otherwise clustered d
 \examples{
 table(cfd.example.data$id)
 # every ID appears 5 times
-cfd.example.sample <- cluster.resample(cfd.example.data, cluster.name='id',
-size=length(unique(cfd.example.data[,'id'])))
+cfd.example.sample <- cluster.resample(cfd.example.data, cluster.name='id')
 table(cfd.example.sample$id)
 # some ID's now don't appear, and some appear more times (multiples of 5)
 # the important part is that if a person (id) is resampled, all their rows of data are taken

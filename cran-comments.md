@@ -1,4 +1,25 @@
 
+# cfdecomp v0.4.0
+
+This is the fourth release of the cfdecomp package. Compared to version 3, the cluster.resample function now makes use of rep() instead of a for() loop, speeding up the function considerably!
+
+## Test environments (re-tested on August 11, 2021)
+* local test on Windows 7 (64 bit), R version 4.1.0 (2021-05-18)
+
+
+* Via check_win_release()
+  * Ubuntu Linux 20.04.1 LTS, R-release, GCC
+  * Fedora Linux, R-devel, clang, gfortran
+  * Windows Server 2008 R2 SP1, R-devel, 32/64 bit
+* Via check_win_devel()
+  * R Under development (unstable) (2021-08-09 r80724)
+* via devtools::check_rhub()
+  * Windows Server 2008 R2 SP1, R-devel, 32/64 bit
+  * Ubuntu Linux 20.04.1 LTS, R-release, GCC
+  * Fedora Linux, R-devel, clang, gfortran
+
+
+
 # cfdecomp v0.3.0
 
 This is the third release of the cfdecomp package, which fixes a bug in the cluster.resample function.

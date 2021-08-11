@@ -1,3 +1,7 @@
+# cfdecomp v0.4.0
+
+This is the fourth release of the cfdecomp package. Compared to version 3, the cluster.resample function now makes use of rep() instead of a for() loop, speeding up the function considerably!
+
 
 # cfdecomp v0.3.0
 
